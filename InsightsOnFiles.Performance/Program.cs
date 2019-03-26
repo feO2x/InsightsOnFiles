@@ -8,7 +8,7 @@ namespace InsightsOnFiles.Performance
     public static class Program
     {
         private static IConfig CreateDefaultConfig() => DefaultConfig.Instance
-                                                                     .With(Job.Core)
+                                                                     .With(Job.Core, Job.Clr)
                                                                      .With(MemoryDiagnoser.Default);
 
         public static void Main(string[] args) =>

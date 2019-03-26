@@ -17,482 +17,334 @@ BenchmarkDotNet=v0.11.4, OS=Windows 10.0.17763.379 (1809/October2018Update/Redst
 Intel Core i7-8750H CPU 2.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
 .NET Core SDK=3.0.100-preview3-010431
   [Host] : .NET Core 2.2.0 (CoreCLR 4.6.27110.04, CoreFX 4.6.27110.04), 64bit RyuJIT
+  Clr    : .NET Framework 4.7.2 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.3362.0
   Core   : .NET Core 2.2.0 (CoreCLR 4.6.27110.04, CoreFX 4.6.27110.04), 64bit RyuJIT
 </code></pre>
-<pre><code>Job=Core  Runtime=Core  
-</code></pre>
+<pre><code></code></pre>
 
 <table>
-<thead><tr><th>                    Method</th><th>FileSize</th><th>BufferSize</th><th>   Mean</th><th>  Error</th><th> StdDev</th><th>Gen 0/1k Op</th><th>Gen 1/1k Op</th><th>Gen 2/1k Op</th><th>Allocated Memory/Op</th>
+<thead><tr><th>                    Method</th><th>Job</th><th>Runtime</th><th>FileSize</th><th>BufferSize</th><th>UseStreamDefaultBufferSize</th><th>     Mean</th><th>   Error</th><th>  StdDev</th><th>   Median</th><th>Gen 0/1k Op</th><th>Gen 1/1k Op</th><th>Gen 2/1k Op</th><th>Allocated Memory/Op</th>
 </tr>
-</thead><tbody><tr><td>AsyncFileStream</td><td>100</td><td>512</td><td>127.55 us</td><td>1.1620 us</td><td>1.0870 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>512</td><td>77.76 us</td><td>0.6499 us</td><td>0.6079 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>512</td><td>129.31 us</td><td>1.0047 us</td><td>0.9398 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>512</td><td>79.31 us</td><td>0.3408 us</td><td>0.3188 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>1024</td><td>127.99 us</td><td>1.2165 us</td><td>1.1379 us</td><td>0.2441</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>1024</td><td>79.13 us</td><td>0.8661 us</td><td>0.8102 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>1024</td><td>127.69 us</td><td>0.9716 us</td><td>0.9088 us</td><td>0.2441</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>1024</td><td>79.32 us</td><td>0.5353 us</td><td>0.5008 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>2048</td><td>124.67 us</td><td>0.4761 us</td><td>0.4453 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>2048</td><td>79.98 us</td><td>1.1051 us</td><td>1.0337 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>2048</td><td>126.26 us</td><td>0.9477 us</td><td>0.8864 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>2048</td><td>78.76 us</td><td>1.2451 us</td><td>1.1647 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>4096</td><td>128.00 us</td><td>0.5177 us</td><td>0.4590 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>4096</td><td>77.49 us</td><td>0.4688 us</td><td>0.4385 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>4096</td><td>136.11 us</td><td>2.8042 us</td><td>6.2139 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>4096</td><td>79.65 us</td><td>1.0994 us</td><td>1.0284 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>8192</td><td>133.29 us</td><td>2.0195 us</td><td>1.8891 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>8192</td><td>81.13 us</td><td>1.1667 us</td><td>1.0913 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>8192</td><td>134.11 us</td><td>1.3446 us</td><td>1.2577 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>8192</td><td>79.73 us</td><td>1.0216 us</td><td>0.9556 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>16384</td><td>133.60 us</td><td>1.2037 us</td><td>1.1259 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>16384</td><td>80.59 us</td><td>1.0002 us</td><td>0.9355 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>16384</td><td>133.26 us</td><td>1.0984 us</td><td>0.9737 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>16384</td><td>82.52 us</td><td>0.7870 us</td><td>0.7362 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>32768</td><td>133.40 us</td><td>2.1935 us</td><td>2.0518 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>32768</td><td>81.30 us</td><td>1.3876 us</td><td>1.2979 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>32768</td><td>134.27 us</td><td>1.2838 us</td><td>1.2009 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>32768</td><td>80.19 us</td><td>0.6388 us</td><td>0.5975 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>65536</td><td>132.64 us</td><td>1.2770 us</td><td>1.1945 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>65536</td><td>81.83 us</td><td>1.1315 us</td><td>1.0030 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>65536</td><td>132.30 us</td><td>1.6681 us</td><td>1.5603 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>65536</td><td>83.93 us</td><td>1.3998 us</td><td>1.3093 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>100</td><td>84975</td><td>135.90 us</td><td>1.2854 us</td><td>1.2023 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>100</td><td>84975</td><td>80.72 us</td><td>0.4496 us</td><td>0.3754 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>100</td><td>84975</td><td>131.13 us</td><td>0.6979 us</td><td>0.6528 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>100</td><td>84975</td><td>80.40 us</td><td>0.6445 us</td><td>0.6028 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>512</td><td>129.23 us</td><td>1.4024 us</td><td>1.3118 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>512</td><td>77.59 us</td><td>0.4175 us</td><td>0.3259 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>512</td><td>128.55 us</td><td>1.2654 us</td><td>1.1837 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>512</td><td>77.67 us</td><td>0.2892 us</td><td>0.2705 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>1024</td><td>125.86 us</td><td>2.1147 us</td><td>1.9781 us</td><td>0.2441</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>1024</td><td>79.24 us</td><td>0.9389 us</td><td>0.8782 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>1024</td><td>127.79 us</td><td>1.0366 us</td><td>0.9697 us</td><td>0.2441</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>1024</td><td>76.83 us</td><td>0.1539 us</td><td>0.1364 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>2048</td><td>127.03 us</td><td>0.5192 us</td><td>0.4336 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>2048</td><td>77.68 us</td><td>0.5215 us</td><td>0.4623 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>2048</td><td>130.26 us</td><td>0.8936 us</td><td>0.6976 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>2048</td><td>78.21 us</td><td>0.2241 us</td><td>0.2096 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>4096</td><td>128.77 us</td><td>1.3129 us</td><td>1.2281 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>4096</td><td>79.36 us</td><td>0.6595 us</td><td>0.5507 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>4096</td><td>128.55 us</td><td>1.5043 us</td><td>1.4071 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>4096</td><td>77.69 us</td><td>0.6900 us</td><td>0.6117 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>8192</td><td>127.58 us</td><td>0.9652 us</td><td>0.9028 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>8192</td><td>78.22 us</td><td>0.1407 us</td><td>0.1175 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>8192</td><td>128.38 us</td><td>1.4257 us</td><td>1.3336 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>8192</td><td>79.28 us</td><td>0.2444 us</td><td>0.2167 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>16384</td><td>132.35 us</td><td>1.2061 us</td><td>1.1282 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>16384</td><td>78.18 us</td><td>0.4830 us</td><td>0.4518 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>16384</td><td>128.86 us</td><td>1.9689 us</td><td>1.8418 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>16384</td><td>79.06 us</td><td>0.3573 us</td><td>0.3343 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>32768</td><td>130.67 us</td><td>1.0499 us</td><td>0.9820 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>32768</td><td>81.16 us</td><td>0.8632 us</td><td>0.8074 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>32768</td><td>128.39 us</td><td>0.3829 us</td><td>0.3197 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>32768</td><td>78.43 us</td><td>0.3180 us</td><td>0.2975 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>65536</td><td>132.79 us</td><td>1.0923 us</td><td>1.0217 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>65536</td><td>80.23 us</td><td>0.3322 us</td><td>0.3107 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>65536</td><td>131.12 us</td><td>1.4120 us</td><td>1.3208 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>65536</td><td>81.24 us</td><td>0.6849 us</td><td>0.6406 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>512</td><td>84975</td><td>130.37 us</td><td>0.3172 us</td><td>0.2649 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>512</td><td>84975</td><td>80.41 us</td><td>0.6851 us</td><td>0.6409 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>512</td><td>84975</td><td>132.28 us</td><td>2.3787 us</td><td>2.2250 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>512</td><td>84975</td><td>80.80 us</td><td>0.1891 us</td><td>0.1579 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>512</td><td>153.17 us</td><td>1.3793 us</td><td>1.2902 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>512</td><td>81.85 us</td><td>0.9275 us</td><td>0.8676 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>512</td><td>153.90 us</td><td>1.2882 us</td><td>1.2050 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>512</td><td>80.02 us</td><td>0.4813 us</td><td>0.4502 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>1024</td><td>128.93 us</td><td>0.7525 us</td><td>0.7038 us</td><td>0.2441</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>1024</td><td>77.93 us</td><td>0.2640 us</td><td>0.2469 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>1024</td><td>124.45 us</td><td>0.8529 us</td><td>0.7978 us</td><td>0.2441</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>1024</td><td>79.03 us</td><td>0.9294 us</td><td>0.8693 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>2048</td><td>126.28 us</td><td>0.5948 us</td><td>0.5273 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>2048</td><td>77.52 us</td><td>0.3493 us</td><td>0.3267 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>2048</td><td>126.10 us</td><td>2.3774 us</td><td>2.2239 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>2048</td><td>79.44 us</td><td>0.8521 us</td><td>0.7971 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>4096</td><td>127.32 us</td><td>1.2064 us</td><td>1.0695 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>4096</td><td>78.05 us</td><td>0.6275 us</td><td>0.5870 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>4096</td><td>130.59 us</td><td>1.0095 us</td><td>0.9443 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>4096</td><td>78.15 us</td><td>0.2554 us</td><td>0.2389 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>8192</td><td>124.99 us</td><td>0.6991 us</td><td>0.6539 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>8192</td><td>80.30 us</td><td>1.0944 us</td><td>1.0237 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>8192</td><td>129.61 us</td><td>2.0978 us</td><td>1.9623 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>8192</td><td>77.73 us</td><td>0.4141 us</td><td>0.3874 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>16384</td><td>129.90 us</td><td>0.8728 us</td><td>0.7737 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>16384</td><td>78.26 us</td><td>0.3292 us</td><td>0.3079 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>16384</td><td>128.07 us</td><td>1.0209 us</td><td>0.9550 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>16384</td><td>80.48 us</td><td>1.0619 us</td><td>0.9933 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>32768</td><td>131.75 us</td><td>1.2169 us</td><td>1.1383 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>32768</td><td>78.47 us</td><td>0.6431 us</td><td>0.6015 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>32768</td><td>128.63 us</td><td>0.6944 us</td><td>0.6156 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>32768</td><td>78.38 us</td><td>0.3728 us</td><td>0.3487 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>65536</td><td>131.66 us</td><td>0.9204 us</td><td>0.8609 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>65536</td><td>81.58 us</td><td>1.1882 us</td><td>1.1115 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>65536</td><td>128.96 us</td><td>1.0640 us</td><td>0.8885 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>65536</td><td>80.83 us</td><td>1.3158 us</td><td>1.2308 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1024</td><td>84975</td><td>132.53 us</td><td>1.4696 us</td><td>1.3747 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1024</td><td>84975</td><td>79.85 us</td><td>0.2154 us</td><td>0.2014 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1024</td><td>84975</td><td>129.73 us</td><td>2.3342 us</td><td>2.1834 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1024</td><td>84975</td><td>82.76 us</td><td>1.1000 us</td><td>1.0289 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>512</td><td>200.72 us</td><td>3.8515 us</td><td>5.0081 us</td><td>0.4883</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>512</td><td>85.12 us</td><td>1.4046 us</td><td>1.3139 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>512</td><td>201.09 us</td><td>1.8059 us</td><td>1.6893 us</td><td>0.4883</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>512</td><td>83.96 us</td><td>0.4027 us</td><td>0.3766 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>1024</td><td>156.91 us</td><td>1.0958 us</td><td>1.0250 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>1024</td><td>79.27 us</td><td>0.2775 us</td><td>0.2596 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>1024</td><td>153.23 us</td><td>1.4885 us</td><td>1.3923 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>1024</td><td>81.80 us</td><td>0.2895 us</td><td>0.2708 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>2048</td><td>126.93 us</td><td>0.9418 us</td><td>0.8810 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>2048</td><td>78.35 us</td><td>1.2930 us</td><td>1.2095 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>2048</td><td>129.04 us</td><td>0.7230 us</td><td>0.6763 us</td><td>0.4883</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>2048</td><td>77.03 us</td><td>0.2130 us</td><td>0.1888 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>4096</td><td>125.10 us</td><td>0.8225 us</td><td>0.7291 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>4096</td><td>80.02 us</td><td>0.8579 us</td><td>0.8025 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>4096</td><td>125.79 us</td><td>0.8464 us</td><td>0.7503 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>4096</td><td>79.81 us</td><td>1.0191 us</td><td>0.9532 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>8192</td><td>129.25 us</td><td>1.3404 us</td><td>1.2538 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>8192</td><td>77.70 us</td><td>0.2955 us</td><td>0.2764 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>8192</td><td>128.88 us</td><td>1.3001 us</td><td>1.2161 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>8192</td><td>80.03 us</td><td>1.1465 us</td><td>1.0724 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>16384</td><td>128.87 us</td><td>2.5697 us</td><td>2.5238 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>16384</td><td>79.25 us</td><td>1.2635 us</td><td>1.1819 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>16384</td><td>130.26 us</td><td>0.8865 us</td><td>0.8293 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>16384</td><td>77.69 us</td><td>0.1591 us</td><td>0.1242 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>32768</td><td>127.91 us</td><td>2.2709 us</td><td>2.1242 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>32768</td><td>80.57 us</td><td>1.0640 us</td><td>0.9953 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>32768</td><td>130.24 us</td><td>1.2965 us</td><td>1.2128 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>32768</td><td>80.42 us</td><td>1.5180 us</td><td>1.4200 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>65536</td><td>131.98 us</td><td>1.2686 us</td><td>1.1866 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>65536</td><td>79.22 us</td><td>0.3471 us</td><td>0.3247 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>65536</td><td>127.08 us</td><td>0.6674 us</td><td>0.5210 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>65536</td><td>81.46 us</td><td>1.3165 us</td><td>1.2314 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>2048</td><td>84975</td><td>130.50 us</td><td>1.3537 us</td><td>1.2662 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>2048</td><td>84975</td><td>82.34 us</td><td>1.3037 us</td><td>1.2195 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>2048</td><td>84975</td><td>130.16 us</td><td>0.3790 us</td><td>0.3165 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>2048</td><td>84975</td><td>79.93 us</td><td>0.4367 us</td><td>0.3647 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>512</td><td>301.72 us</td><td>5.8177 us</td><td>5.7137 us</td><td>0.4883</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>512</td><td>92.82 us</td><td>0.4038 us</td><td>0.3777 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>512</td><td>295.59 us</td><td>2.8387 us</td><td>2.3705 us</td><td>0.4883</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>512</td><td>95.06 us</td><td>1.2111 us</td><td>1.1329 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>1024</td><td>201.45 us</td><td>1.4913 us</td><td>1.3949 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>1024</td><td>84.32 us</td><td>0.6619 us</td><td>0.5868 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>1024</td><td>197.77 us</td><td>2.3571 us</td><td>2.2048 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>1024</td><td>84.91 us</td><td>0.2898 us</td><td>0.2420 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>2048</td><td>156.07 us</td><td>2.0849 us</td><td>1.9502 us</td><td>0.7324</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>2048</td><td>82.48 us</td><td>1.0958 us</td><td>1.0250 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>2048</td><td>152.23 us</td><td>1.4033 us</td><td>1.3126 us</td><td>0.7324</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>2048</td><td>82.82 us</td><td>0.8591 us</td><td>0.8036 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>4096</td><td>126.90 us</td><td>1.0496 us</td><td>0.9818 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>4096</td><td>77.47 us</td><td>0.8211 us</td><td>0.7279 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>4096</td><td>129.89 us</td><td>1.1373 us</td><td>1.0639 us</td><td>0.9766</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>4096</td><td>77.93 us</td><td>0.2567 us</td><td>0.2401 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>8192</td><td>128.43 us</td><td>0.7570 us</td><td>0.5911 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>8192</td><td>80.28 us</td><td>1.1312 us</td><td>1.0581 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>8192</td><td>126.90 us</td><td>0.4929 us</td><td>0.4370 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>8192</td><td>78.08 us</td><td>0.5774 us</td><td>0.5401 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>16384</td><td>126.88 us</td><td>0.4199 us</td><td>0.3506 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>16384</td><td>78.36 us</td><td>0.2145 us</td><td>0.1901 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>16384</td><td>127.31 us</td><td>2.2985 us</td><td>2.1500 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>16384</td><td>80.58 us</td><td>0.9011 us</td><td>0.8429 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>32768</td><td>128.18 us</td><td>0.5823 us</td><td>0.5162 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>32768</td><td>78.53 us</td><td>0.3635 us</td><td>0.3400 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>32768</td><td>129.05 us</td><td>1.3078 us</td><td>1.1594 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>32768</td><td>79.10 us</td><td>0.2831 us</td><td>0.2509 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>65536</td><td>130.72 us</td><td>1.9315 us</td><td>1.8067 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>65536</td><td>81.87 us</td><td>1.1312 us</td><td>1.0581 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>65536</td><td>132.48 us</td><td>0.7947 us</td><td>0.7433 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>65536</td><td>80.17 us</td><td>0.9517 us</td><td>0.8902 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>4096</td><td>84975</td><td>134.81 us</td><td>1.2970 us</td><td>1.2132 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>4096</td><td>84975</td><td>82.39 us</td><td>1.6118 us</td><td>2.1517 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>4096</td><td>84975</td><td>132.88 us</td><td>1.1147 us</td><td>1.0427 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>4096</td><td>84975</td><td>80.00 us</td><td>0.4718 us</td><td>0.4413 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>512</td><td>502.29 us</td><td>4.8805 us</td><td>4.5652 us</td><td>1.4648</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>512</td><td>109.66 us</td><td>0.1343 us</td><td>0.1121 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>512</td><td>494.82 us</td><td>9.3028 us</td><td>9.1366 us</td><td>1.4648</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>512</td><td>110.58 us</td><td>0.7304 us</td><td>0.6832 us</td><td>0.1221</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>1024</td><td>307.06 us</td><td>6.0196 us</td><td>6.1816 us</td><td>0.9766</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>1024</td><td>94.28 us</td><td>1.0904 us</td><td>0.9666 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>1024</td><td>296.05 us</td><td>3.2870 us</td><td>2.9139 us</td><td>0.9766</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>1024</td><td>93.74 us</td><td>0.5781 us</td><td>0.5407 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>2048</td><td>207.40 us</td><td>3.8805 us</td><td>3.4400 us</td><td>0.7324</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>2048</td><td>85.09 us</td><td>0.2779 us</td><td>0.2321 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>2048</td><td>199.85 us</td><td>1.8030 us</td><td>1.6865 us</td><td>0.7324</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>2048</td><td>86.81 us</td><td>1.0438 us</td><td>0.9253 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>4096</td><td>158.11 us</td><td>1.5007 us</td><td>1.4038 us</td><td>1.2207</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>4096</td><td>82.71 us</td><td>1.0800 us</td><td>1.0102 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>4096</td><td>158.13 us</td><td>1.0136 us</td><td>0.8986 us</td><td>1.2207</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>4096</td><td>80.59 us</td><td>0.5710 us</td><td>0.5062 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>8192</td><td>130.75 us</td><td>0.6115 us</td><td>0.5421 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>8192</td><td>78.42 us</td><td>0.2826 us</td><td>0.2360 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>8192</td><td>125.02 us</td><td>0.5081 us</td><td>0.4242 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>8192</td><td>80.33 us</td><td>0.7778 us</td><td>0.7275 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>16384</td><td>128.87 us</td><td>1.6719 us</td><td>1.5639 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>16384</td><td>78.20 us</td><td>0.4322 us</td><td>0.3831 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>16384</td><td>127.90 us</td><td>0.5395 us</td><td>0.4783 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>16384</td><td>78.82 us</td><td>0.2040 us</td><td>0.1593 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>32768</td><td>130.43 us</td><td>1.3188 us</td><td>1.2336 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>32768</td><td>81.72 us</td><td>1.2148 us</td><td>1.1363 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>32768</td><td>130.85 us</td><td>1.4709 us</td><td>1.3759 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>32768</td><td>79.11 us</td><td>0.5179 us</td><td>0.4845 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>65536</td><td>132.40 us</td><td>0.8744 us</td><td>0.7752 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>65536</td><td>80.25 us</td><td>0.3400 us</td><td>0.2839 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>65536</td><td>131.48 us</td><td>2.5082 us</td><td>2.4634 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>65536</td><td>82.07 us</td><td>0.9014 us</td><td>0.8431 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>8192</td><td>84975</td><td>129.98 us</td><td>0.7314 us</td><td>0.6483 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>8192</td><td>84975</td><td>80.49 us</td><td>0.6193 us</td><td>0.5793 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>8192</td><td>84975</td><td>133.20 us</td><td>0.7843 us</td><td>0.6953 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>8192</td><td>84975</td><td>81.08 us</td><td>0.3196 us</td><td>0.2990 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>512</td><td>848.83 us</td><td>11.4596 us</td><td>10.7193 us</td><td>1.9531</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>512</td><td>146.55 us</td><td>1.2608 us</td><td>1.1793 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>512</td><td>842.41 us</td><td>5.1889 us</td><td>4.5999 us</td><td>1.9531</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>512</td><td>146.66 us</td><td>1.4126 us</td><td>1.3213 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>1024</td><td>497.45 us</td><td>4.7744 us</td><td>4.4660 us</td><td>0.9766</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>1024</td><td>110.88 us</td><td>0.9943 us</td><td>0.9300 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>1024</td><td>484.55 us</td><td>7.0119 us</td><td>6.2158 us</td><td>1.4648</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>1024</td><td>112.94 us</td><td>1.3268 us</td><td>1.2411 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>2048</td><td>309.90 us</td><td>2.5914 us</td><td>2.4240 us</td><td>0.9766</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>2048</td><td>93.96 us</td><td>0.7293 us</td><td>0.6822 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>2048</td><td>308.19 us</td><td>5.6408 us</td><td>5.2764 us</td><td>0.9766</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>2048</td><td>93.88 us</td><td>0.2806 us</td><td>0.2625 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>4096</td><td>201.45 us</td><td>1.6147 us</td><td>1.5104 us</td><td>1.2207</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>4096</td><td>87.54 us</td><td>1.0999 us</td><td>1.0288 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>4096</td><td>201.89 us</td><td>3.9482 us</td><td>3.6931 us</td><td>1.2207</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>4096</td><td>85.75 us</td><td>0.6547 us</td><td>0.5804 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>8192</td><td>160.12 us</td><td>1.3008 us</td><td>1.2168 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>8192</td><td>82.20 us</td><td>0.6308 us</td><td>0.5900 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>8192</td><td>154.69 us</td><td>2.0630 us</td><td>1.9298 us</td><td>1.9531</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>8192</td><td>83.87 us</td><td>0.8765 us</td><td>0.8199 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>16384</td><td>126.67 us</td><td>0.2844 us</td><td>0.2521 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>16384</td><td>79.24 us</td><td>1.0186 us</td><td>0.9528 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>16384</td><td>131.33 us</td><td>1.2098 us</td><td>1.0725 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>16384</td><td>78.80 us</td><td>0.4168 us</td><td>0.3898 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>32768</td><td>130.81 us</td><td>0.8854 us</td><td>0.8282 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>32768</td><td>81.30 us</td><td>0.5489 us</td><td>0.4866 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>32768</td><td>130.23 us</td><td>1.6254 us</td><td>1.5204 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>32768</td><td>81.38 us</td><td>1.4367 us</td><td>1.3439 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>65536</td><td>130.67 us</td><td>0.6835 us</td><td>0.6059 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>65536</td><td>80.78 us</td><td>0.8626 us</td><td>0.8068 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>65536</td><td>129.73 us</td><td>0.6129 us</td><td>0.5434 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>65536</td><td>80.89 us</td><td>0.2901 us</td><td>0.2713 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>16384</td><td>84975</td><td>130.27 us</td><td>2.1815 us</td><td>2.0406 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>16384</td><td>84975</td><td>83.58 us</td><td>0.9782 us</td><td>0.9150 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>16384</td><td>84975</td><td>132.24 us</td><td>2.5558 us</td><td>2.3907 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>16384</td><td>84975</td><td>83.69 us</td><td>1.0651 us</td><td>0.9963 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>512</td><td>1,520.54 us</td><td>16.9045 us</td><td>15.8125 us</td><td>3.9063</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>512</td><td>213.54 us</td><td>0.9917 us</td><td>0.9276 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>512</td><td>1,527.44 us</td><td>20.8947 us</td><td>19.5449 us</td><td>3.9063</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>512</td><td>213.63 us</td><td>0.8020 us</td><td>0.7110 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>1024</td><td>835.05 us</td><td>8.0245 us</td><td>7.5061 us</td><td>1.9531</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>1024</td><td>147.65 us</td><td>2.0519 us</td><td>1.9194 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>1024</td><td>850.04 us</td><td>11.4447 us</td><td>10.7054 us</td><td>1.9531</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>1024</td><td>145.13 us</td><td>0.4179 us</td><td>0.3490 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>2048</td><td>483.48 us</td><td>9.4459 us</td><td>9.2772 us</td><td>1.9531</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>2048</td><td>113.89 us</td><td>0.3507 us</td><td>0.3281 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>2048</td><td>495.88 us</td><td>9.5596 us</td><td>10.6254 us</td><td>1.9531</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>2048</td><td>113.31 us</td><td>1.6361 us</td><td>1.5305 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>4096</td><td>319.10 us</td><td>4.9363 us</td><td>4.6174 us</td><td>1.4648</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>4096</td><td>94.25 us</td><td>0.3198 us</td><td>0.2835 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>4096</td><td>301.67 us</td><td>4.8208 us</td><td>4.5094 us</td><td>1.4648</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>4096</td><td>96.81 us</td><td>0.5765 us</td><td>0.5111 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>8192</td><td>203.20 us</td><td>2.2758 us</td><td>2.1287 us</td><td>2.1973</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>8192</td><td>89.07 us</td><td>1.3443 us</td><td>1.2575 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>8192</td><td>205.65 us</td><td>1.8479 us</td><td>1.7285 us</td><td>2.1973</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>8192</td><td>88.62 us</td><td>1.6904 us</td><td>1.5812 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>16384</td><td>159.84 us</td><td>2.4759 us</td><td>2.3160 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>16384</td><td>81.93 us</td><td>0.1805 us</td><td>0.1507 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>16384</td><td>158.45 us</td><td>2.9867 us</td><td>2.7938 us</td><td>3.6621</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>16384</td><td>84.95 us</td><td>1.1300 us</td><td>1.0570 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>32768</td><td>129.12 us</td><td>2.1316 us</td><td>1.8897 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>32768</td><td>80.77 us</td><td>0.2864 us</td><td>0.2539 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>32768</td><td>128.43 us</td><td>1.4906 us</td><td>1.3943 us</td><td>7.0801</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>32768</td><td>82.79 us</td><td>1.0191 us</td><td>0.9532 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>65536</td><td>134.66 us</td><td>1.1973 us</td><td>1.1199 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>65536</td><td>82.82 us</td><td>1.4542 us</td><td>1.3603 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>65536</td><td>131.32 us</td><td>0.4585 us</td><td>0.4289 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>65536</td><td>81.30 us</td><td>0.2574 us</td><td>0.2281 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>32768</td><td>84975</td><td>133.78 us</td><td>1.0314 us</td><td>0.9648 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>32768</td><td>84975</td><td>84.10 us</td><td>1.6324 us</td><td>1.5270 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>32768</td><td>84975</td><td>132.70 us</td><td>2.3938 us</td><td>2.2391 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>32768</td><td>84975</td><td>83.30 us</td><td>1.3129 us</td><td>1.2281 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>512</td><td>2,897.85 us</td><td>16.9202 us</td><td>14.9993 us</td><td>7.8125</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>512</td><td>352.37 us</td><td>2.1523 us</td><td>1.7973 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>512</td><td>2,950.65 us</td><td>25.8825 us</td><td>22.9441 us</td><td>7.8125</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>512</td><td>349.73 us</td><td>1.6235 us</td><td>1.4392 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>1024</td><td>1,537.65 us</td><td>10.5940 us</td><td>9.9096 us</td><td>3.9063</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>1024</td><td>214.71 us</td><td>0.6830 us</td><td>0.6055 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>1024</td><td>1,515.51 us</td><td>24.9099 us</td><td>22.0820 us</td><td>3.9063</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>1024</td><td>217.01 us</td><td>2.6868 us</td><td>2.5133 us</td><td>0.2441</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>2048</td><td>852.08 us</td><td>10.6374 us</td><td>9.9503 us</td><td>2.9297</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>2048</td><td>147.12 us</td><td>0.8573 us</td><td>0.7600 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>2048</td><td>843.46 us</td><td>5.6341 us</td><td>4.7047 us</td><td>2.9297</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>2048</td><td>146.80 us</td><td>0.5702 us</td><td>0.5055 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>4096</td><td>494.41 us</td><td>9.5942 us</td><td>11.0487 us</td><td>2.4414</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>4096</td><td>116.05 us</td><td>1.1829 us</td><td>1.1065 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>4096</td><td>504.76 us</td><td>3.9872 us</td><td>3.7296 us</td><td>1.9531</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>4096</td><td>114.90 us</td><td>1.7017 us</td><td>1.5918 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>8192</td><td>311.86 us</td><td>4.5098 us</td><td>4.2185 us</td><td>2.4414</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>8192</td><td>96.41 us</td><td>0.3157 us</td><td>0.2953 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>8192</td><td>299.67 us</td><td>6.6460 us</td><td>6.2167 us</td><td>2.4414</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>8192</td><td>98.96 us</td><td>0.2868 us</td><td>0.2682 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>16384</td><td>201.52 us</td><td>2.5440 us</td><td>2.3796 us</td><td>3.9063</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>16384</td><td>90.64 us</td><td>1.5933 us</td><td>1.4903 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>16384</td><td>209.63 us</td><td>2.7268 us</td><td>2.5506 us</td><td>3.9063</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>16384</td><td>87.92 us</td><td>0.4213 us</td><td>0.3941 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>32768</td><td>164.04 us</td><td>1.2687 us</td><td>1.1247 us</td><td>7.3242</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>32768</td><td>86.76 us</td><td>0.1886 us</td><td>0.1672 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>32768</td><td>158.19 us</td><td>2.3628 us</td><td>2.2102 us</td><td>7.3242</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>32768</td><td>86.65 us</td><td>1.4097 us</td><td>1.3186 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>65536</td><td>136.41 us</td><td>1.0215 us</td><td>0.9555 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>65536</td><td>82.46 us</td><td>0.2637 us</td><td>0.2337 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>65536</td><td>131.11 us</td><td>0.8620 us</td><td>0.8063 us</td><td>13.9160</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>65536</td><td>84.69 us</td><td>0.5235 us</td><td>0.4371 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>65536</td><td>84975</td><td>134.00 us</td><td>1.3149 us</td><td>1.2299 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>65536</td><td>84975</td><td>85.05 us</td><td>1.5756 us</td><td>1.4738 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>65536</td><td>84975</td><td>131.01 us</td><td>0.6990 us</td><td>0.5837 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>65536</td><td>84975</td><td>85.75 us</td><td>1.2808 us</td><td>1.1981 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>512</td><td>5,565.58 us</td><td>37.6854 us</td><td>35.2509 us</td><td>15.6250</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>512</td><td>625.26 us</td><td>2.7190 us</td><td>2.5433 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>512</td><td>5,594.57 us</td><td>33.4100 us</td><td>31.2517 us</td><td>15.6250</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>512</td><td>621.93 us</td><td>1.7075 us</td><td>1.5972 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>1024</td><td>2,866.03 us</td><td>20.1048 us</td><td>18.8060 us</td><td>7.8125</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>1024</td><td>354.99 us</td><td>4.0835 us</td><td>3.8198 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>1024</td><td>2,911.64 us</td><td>13.0271 us</td><td>12.1856 us</td><td>7.8125</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>1024</td><td>351.73 us</td><td>0.9700 us</td><td>0.8100 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>2048</td><td>1,556.14 us</td><td>16.6390 us</td><td>15.5641 us</td><td>3.9063</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>2048</td><td>217.39 us</td><td>0.9660 us</td><td>0.8563 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>2048</td><td>1,537.44 us</td><td>13.1191 us</td><td>12.2716 us</td><td>3.9063</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>2048</td><td>220.55 us</td><td>2.7425 us</td><td>2.5653 us</td><td>0.4883</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>4096</td><td>844.31 us</td><td>9.3259 us</td><td>8.7235 us</td><td>3.9063</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>4096</td><td>150.17 us</td><td>1.1521 us</td><td>1.0776 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>4096</td><td>850.12 us</td><td>7.3685 us</td><td>6.8925 us</td><td>3.9063</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>4096</td><td>150.18 us</td><td>0.5587 us</td><td>0.4953 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>8192</td><td>497.44 us</td><td>8.1281 us</td><td>7.6031 us</td><td>2.9297</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>8192</td><td>118.04 us</td><td>0.5684 us</td><td>0.4747 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>8192</td><td>510.52 us</td><td>10.2002 us</td><td>10.9141 us</td><td>2.9297</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>8192</td><td>119.93 us</td><td>1.8018 us</td><td>1.6854 us</td><td>1.8311</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>16384</td><td>320.78 us</td><td>4.9667 us</td><td>4.6459 us</td><td>4.3945</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>16384</td><td>99.63 us</td><td>0.4269 us</td><td>0.3993 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>16384</td><td>315.55 us</td><td>5.0896 us</td><td>4.5118 us</td><td>4.3945</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>16384</td><td>102.14 us</td><td>0.1219 us</td><td>0.0951 us</td><td>3.5400</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>32768</td><td>208.15 us</td><td>4.1091 us</td><td>4.0357 us</td><td>7.3242</td><td>0.2441</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>32768</td><td>94.23 us</td><td>1.5846 us</td><td>1.4822 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>32768</td><td>215.91 us</td><td>4.2728 us</td><td>4.7492 us</td><td>7.3242</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>32768</td><td>91.12 us</td><td>0.3108 us</td><td>0.2756 us</td><td>6.9580</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>65536</td><td>165.82 us</td><td>1.7276 us</td><td>1.6160 us</td><td>14.1602</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>65536</td><td>88.35 us</td><td>0.2080 us</td><td>0.1737 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>65536</td><td>163.21 us</td><td>1.8727 us</td><td>1.7517 us</td><td>14.1602</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>65536</td><td>90.35 us</td><td>1.0112 us</td><td>0.9458 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>131072</td><td>84975</td><td>164.12 us</td><td>2.2008 us</td><td>2.0586 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>131072</td><td>84975</td><td>89.50 us</td><td>0.7537 us</td><td>0.7050 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>131072</td><td>84975</td><td>165.96 us</td><td>1.9835 us</td><td>1.8553 us</td><td>18.0664</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>131072</td><td>84975</td><td>89.76 us</td><td>0.2402 us</td><td>0.2246 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>512</td><td>21,799.18 us</td><td>122.3467 us</td><td>108.4572 us</td><td>62.5000</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>512</td><td>2,289.62 us</td><td>32.4382 us</td><td>30.3427 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>512</td><td>21,982.29 us</td><td>194.9635 us</td><td>182.3690 us</td><td>62.5000</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>512</td><td>2,318.93 us</td><td>45.2807 us</td><td>44.4717 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>1024</td><td>11,444.72 us</td><td>103.0851 us</td><td>91.3823 us</td><td>31.2500</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>1024</td><td>1,219.18 us</td><td>28.6864 us</td><td>29.4588 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>1024</td><td>11,476.30 us</td><td>143.1192 us</td><td>133.8738 us</td><td>31.2500</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>1024</td><td>1,206.39 us</td><td>10.4991 us</td><td>9.8208 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>2048</td><td>5,845.53 us</td><td>55.8637 us</td><td>52.2549 us</td><td>15.6250</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>2048</td><td>641.68 us</td><td>7.6576 us</td><td>7.1629 us</td><td>-</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>2048</td><td>5,722.22 us</td><td>74.5088 us</td><td>69.6955 us</td><td>15.6250</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>2048</td><td>644.07 us</td><td>8.2076 us</td><td>7.6774 us</td><td>-</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>4096</td><td>2,939.83 us</td><td>36.1455 us</td><td>33.8105 us</td><td>7.8125</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>4096</td><td>373.68 us</td><td>3.6839 us</td><td>3.4459 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>4096</td><td>2,948.55 us</td><td>20.3759 us</td><td>19.0596 us</td><td>7.8125</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>4096</td><td>370.14 us</td><td>5.8680 us</td><td>5.4889 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>8192</td><td>1,587.83 us</td><td>16.0405 us</td><td>15.0043 us</td><td>7.8125</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>8192</td><td>232.83 us</td><td>0.3065 us</td><td>0.2559 us</td><td>1.7090</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>8192</td><td>1,568.57 us</td><td>9.5882 us</td><td>8.9688 us</td><td>7.8125</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>8192</td><td>236.65 us</td><td>3.6536 us</td><td>3.4175 us</td><td>1.7090</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>16384</td><td>855.34 us</td><td>16.6901 us</td><td>19.2204 us</td><td>6.8359</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>16384</td><td>166.73 us</td><td>0.8017 us</td><td>0.6694 us</td><td>3.4180</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>16384</td><td>894.93 us</td><td>7.1171 us</td><td>6.6573 us</td><td>6.8359</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>16384</td><td>165.44 us</td><td>0.5390 us</td><td>0.5042 us</td><td>3.4180</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>32768</td><td>498.01 us</td><td>7.4830 us</td><td>6.9996 us</td><td>8.7891</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>32768</td><td>135.00 us</td><td>2.8032 us</td><td>2.4849 us</td><td>6.8359</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>32768</td><td>514.10 us</td><td>10.0677 us</td><td>15.9685 us</td><td>8.7891</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>32768</td><td>135.04 us</td><td>1.5442 us</td><td>1.3689 us</td><td>6.8359</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>65536</td><td>336.33 us</td><td>3.5079 us</td><td>3.2813 us</td><td>14.6484</td><td>0.4883</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>65536</td><td>114.50 us</td><td>0.3977 us</td><td>0.3525 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>65536</td><td>328.82 us</td><td>5.5904 us</td><td>5.2293 us</td><td>14.6484</td><td>0.9766</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>65536</td><td>118.28 us</td><td>0.7719 us</td><td>0.6843 us</td><td>13.7939</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>524288</td><td>84975</td><td>306.36 us</td><td>5.8380 us</td><td>6.4889 us</td><td>18.5547</td><td>1.4648</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>524288</td><td>84975</td><td>118.72 us</td><td>1.0889 us</td><td>1.0185 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>524288</td><td>84975</td><td>307.30 us</td><td>1.8904 us</td><td>1.6758 us</td><td>18.5547</td><td>0.4883</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>524288</td><td>84975</td><td>117.02 us</td><td>2.1308 us</td><td>1.9931 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>512</td><td>43,641.60 us</td><td>423.9979 us</td><td>375.8631 us</td><td>83.3333</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>512</td><td>4,435.15 us</td><td>14.0399 us</td><td>12.4460 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>512</td><td>43,627.13 us</td><td>227.9464 us</td><td>202.0685 us</td><td>83.3333</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>512</td><td>4,510.55 us</td><td>52.1822 us</td><td>48.8113 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>1024</td><td>21,973.13 us</td><td>346.5762 us</td><td>324.1876 us</td><td>62.5000</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>1024</td><td>2,305.53 us</td><td>18.3498 us</td><td>17.1644 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>1024</td><td>21,719.38 us</td><td>263.2322 us</td><td>246.2275 us</td><td>62.5000</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>1024</td><td>2,299.30 us</td><td>10.0885 us</td><td>9.4368 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>2048</td><td>11,246.83 us</td><td>39.4813 us</td><td>34.9991 us</td><td>31.2500</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>2048</td><td>1,213.68 us</td><td>9.5648 us</td><td>8.4789 us</td><td>-</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>2048</td><td>11,112.37 us</td><td>196.6350 us</td><td>174.3118 us</td><td>31.2500</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>2048</td><td>1,196.40 us</td><td>5.4218 us</td><td>5.0716 us</td><td>-</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>4096</td><td>5,749.25 us</td><td>29.7335 us</td><td>27.8127 us</td><td>15.6250</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>4096</td><td>672.56 us</td><td>9.0280 us</td><td>8.4448 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>4096</td><td>5,653.74 us</td><td>85.9325 us</td><td>80.3813 us</td><td>15.6250</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>4096</td><td>668.51 us</td><td>2.6735 us</td><td>2.5008 us</td><td>0.9766</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>8192</td><td>2,975.86 us</td><td>22.3500 us</td><td>20.9062 us</td><td>11.7188</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>8192</td><td>395.05 us</td><td>5.1183 us</td><td>4.7877 us</td><td>1.4648</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>8192</td><td>2,995.31 us</td><td>19.4095 us</td><td>18.1557 us</td><td>11.7188</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>8192</td><td>390.07 us</td><td>1.7843 us</td><td>1.5817 us</td><td>1.4648</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>16384</td><td>1,573.87 us</td><td>16.6799 us</td><td>15.6023 us</td><td>9.7656</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>16384</td><td>258.62 us</td><td>2.7091 us</td><td>2.5341 us</td><td>3.4180</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>16384</td><td>1,624.48 us</td><td>16.3627 us</td><td>15.3057 us</td><td>9.7656</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>16384</td><td>254.38 us</td><td>1.6418 us</td><td>1.5357 us</td><td>3.4180</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>32768</td><td>906.08 us</td><td>8.2730 us</td><td>7.7385 us</td><td>10.7422</td><td>0.9766</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>32768</td><td>184.34 us</td><td>0.8013 us</td><td>0.7495 us</td><td>6.8359</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>32768</td><td>897.24 us</td><td>14.5834 us</td><td>13.6413 us</td><td>10.7422</td><td>0.9766</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>32768</td><td>186.77 us</td><td>1.9072 us</td><td>1.7840 us</td><td>6.8359</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>65536</td><td>538.04 us</td><td>9.7909 us</td><td>9.1584 us</td><td>15.6250</td><td>0.9766</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>65536</td><td>150.11 us</td><td>1.7271 us</td><td>1.6155 us</td><td>13.6719</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>65536</td><td>549.44 us</td><td>6.7004 us</td><td>6.2675 us</td><td>15.6250</td><td>0.9766</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>65536</td><td>151.76 us</td><td>0.4561 us</td><td>0.4043 us</td><td>13.6719</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>1048576</td><td>84975</td><td>473.24 us</td><td>7.8386 us</td><td>7.3322 us</td><td>19.5313</td><td>0.4883</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>1048576</td><td>84975</td><td>151.40 us</td><td>2.5018 us</td><td>2.3402 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>1048576</td><td>84975</td><td>468.98 us</td><td>9.2291 us</td><td>8.6329 us</td><td>19.5313</td><td>0.4883</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>1048576</td><td>84975</td><td>152.02 us</td><td>1.2112 us</td><td>1.1330 us</td><td>17.8223</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>512</td><td>432,193.29 us</td><td>5,441.6212 us</td><td>5,090.0959 us</td><td>1000.0000</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>512</td><td>45,800.20 us</td><td>561.0100 us</td><td>524.7691 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>512</td><td>438,641.74 us</td><td>3,213.5853 us</td><td>2,848.7596 us</td><td>1000.0000</td><td>-</td><td>-</td><td>1.54 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>512</td><td>45,416.84 us</td><td>172.4746 us</td><td>161.3328 us</td><td>-</td><td>-</td><td>-</td><td>1.03 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>1024</td><td>224,192.01 us</td><td>2,077.9937 us</td><td>1,943.7566 us</td><td>666.6667</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>1024</td><td>23,540.94 us</td><td>53.5941 us</td><td>41.8427 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>1024</td><td>223,470.96 us</td><td>1,434.5060 us</td><td>1,341.8378 us</td><td>666.6667</td><td>-</td><td>-</td><td>2.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>1024</td><td>23,663.14 us</td><td>237.1398 us</td><td>221.8207 us</td><td>-</td><td>-</td><td>-</td><td>1.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>2048</td><td>115,490.51 us</td><td>1,158.2323 us</td><td>1,083.4112 us</td><td>200.0000</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>2048</td><td>12,680.73 us</td><td>60.1446 us</td><td>56.2593 us</td><td>-</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>2048</td><td>113,665.06 us</td><td>1,353.7297 us</td><td>1,266.2796 us</td><td>200.0000</td><td>-</td><td>-</td><td>3.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>2048</td><td>12,769.15 us</td><td>20.5479 us</td><td>18.2151 us</td><td>-</td><td>-</td><td>-</td><td>2.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>4096</td><td>57,959.08 us</td><td>792.7950 us</td><td>741.5809 us</td><td>111.1111</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>4096</td><td>7,298.89 us</td><td>62.7901 us</td><td>58.7339 us</td><td>-</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>4096</td><td>57,917.21 us</td><td>493.2558 us</td><td>461.3917 us</td><td>111.1111</td><td>-</td><td>-</td><td>5.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>4096</td><td>7,349.53 us</td><td>45.8395 us</td><td>42.8783 us</td><td>-</td><td>-</td><td>-</td><td>4.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>8192</td><td>29,945.47 us</td><td>349.2902 us</td><td>326.7263 us</td><td>93.7500</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>8192</td><td>4,286.00 us</td><td>55.7010 us</td><td>52.1028 us</td><td>-</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>8192</td><td>30,267.91 us</td><td>272.8220 us</td><td>255.1979 us</td><td>93.7500</td><td>-</td><td>-</td><td>9.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>8192</td><td>4,191.08 us</td><td>26.2303 us</td><td>24.5358 us</td><td>-</td><td>-</td><td>-</td><td>8.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>16384</td><td>15,573.40 us</td><td>112.3869 us</td><td>105.1267 us</td><td>31.2500</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>16384</td><td>2,759.76 us</td><td>13.7091 us</td><td>12.8235 us</td><td>-</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>16384</td><td>15,852.25 us</td><td>72.6309 us</td><td>67.9390 us</td><td>31.2500</td><td>-</td><td>-</td><td>17.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>16384</td><td>2,768.55 us</td><td>45.7413 us</td><td>42.7865 us</td><td>-</td><td>-</td><td>-</td><td>16.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>32768</td><td>8,696.93 us</td><td>38.3101 us</td><td>35.8353 us</td><td>31.2500</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>32768</td><td>1,933.15 us</td><td>18.5181 us</td><td>17.3218 us</td><td>5.8594</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>32768</td><td>8,608.64 us</td><td>50.0267 us</td><td>46.7950 us</td><td>31.2500</td><td>-</td><td>-</td><td>33.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>32768</td><td>1,954.65 us</td><td>12.7534 us</td><td>11.9295 us</td><td>3.9063</td><td>-</td><td>-</td><td>32.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>65536</td><td>4,965.93 us</td><td>46.4481 us</td><td>43.4475 us</td><td>23.4375</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>65536</td><td>1,590.96 us</td><td>20.1398 us</td><td>18.8388 us</td><td>13.6719</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>65536</td><td>4,960.79 us</td><td>66.6757 us</td><td>62.3685 us</td><td>23.4375</td><td>-</td><td>-</td><td>65.04 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>65536</td><td>1,587.24 us</td><td>16.5084 us</td><td>15.4419 us</td><td>13.6719</td><td>-</td><td>-</td><td>64.53 KB</td>
-</tr><tr><td>AsyncFileStream</td><td>10485760</td><td>84975</td><td>4,072.42 us</td><td>29.0182 us</td><td>27.1437 us</td><td>23.4375</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStream</td><td>10485760</td><td>84975</td><td>1,540.53 us</td><td>9.9211 us</td><td>9.2802 us</td><td>17.5781</td><td>-</td><td>-</td><td>83.52 KB</td>
-</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>10485760</td><td>84975</td><td>4,044.93 us</td><td>43.7380 us</td><td>40.9125 us</td><td>23.4375</td><td>-</td><td>-</td><td>84.02 KB</td>
-</tr><tr><td>SyncFileStreamSequentialOptions</td><td>10485760</td><td>84975</td><td>1,600.90 us</td><td>17.7577 us</td><td>16.6106 us</td><td>17.5781</td><td>-</td><td>-</td><td>83.52 KB</td>
+</thead><tbody><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>False</td><td>170.56 us</td><td>1.4135 us</td><td>1.2531 us</td><td>169.99 us</td><td>0.2441</td><td>-</td><td>-</td><td>1594 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>False</td><td>82.49 us</td><td>0.6349 us</td><td>0.5939 us</td><td>82.32 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>False</td><td>171.53 us</td><td>1.8614 us</td><td>1.7412 us</td><td>170.72 us</td><td>0.2441</td><td>-</td><td>-</td><td>1594 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>False</td><td>80.44 us</td><td>0.4994 us</td><td>0.4427 us</td><td>80.30 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>False</td><td>155.79 us</td><td>1.4404 us</td><td>1.3474 us</td><td>155.98 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>False</td><td>79.47 us</td><td>0.1840 us</td><td>0.1631 us</td><td>79.43 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>False</td><td>153.64 us</td><td>1.7769 us</td><td>1.6622 us</td><td>154.10 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>False</td><td>81.98 us</td><td>1.2541 us</td><td>1.1731 us</td><td>82.49 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>True</td><td>149.17 us</td><td>0.8578 us</td><td>0.8024 us</td><td>149.01 us</td><td>0.9766</td><td>-</td><td>-</td><td>5740 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>True</td><td>78.35 us</td><td>0.4490 us</td><td>0.3980 us</td><td>78.41 us</td><td>0.8545</td><td>-</td><td>-</td><td>4427 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>True</td><td>155.84 us</td><td>0.8707 us</td><td>0.8145 us</td><td>155.88 us</td><td>0.9766</td><td>-</td><td>-</td><td>5742 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>512</td><td>True</td><td>80.09 us</td><td>1.0782 us</td><td>1.0085 us</td><td>79.94 us</td><td>0.8545</td><td>-</td><td>-</td><td>4427 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>True</td><td>100.30 us</td><td>1.9202 us</td><td>1.7961 us</td><td>98.99 us</td><td>0.9766</td><td>-</td><td>-</td><td>5074 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>True</td><td>83.30 us</td><td>1.5365 us</td><td>1.4373 us</td><td>83.69 us</td><td>0.9766</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>True</td><td>104.09 us</td><td>1.6703 us</td><td>1.5624 us</td><td>104.39 us</td><td>0.9766</td><td>-</td><td>-</td><td>5077 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>512</td><td>True</td><td>82.96 us</td><td>1.6087 us</td><td>1.6521 us</td><td>82.81 us</td><td>0.9766</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>False</td><td>134.27 us</td><td>2.3009 us</td><td>2.1523 us</td><td>134.32 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>False</td><td>82.31 us</td><td>1.5905 us</td><td>1.4099 us</td><td>81.74 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>False</td><td>134.75 us</td><td>2.2244 us</td><td>1.9718 us</td><td>134.57 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>False</td><td>83.40 us</td><td>1.6515 us</td><td>2.4207 us</td><td>83.25 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>False</td><td>128.89 us</td><td>0.6804 us</td><td>0.6365 us</td><td>128.68 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>False</td><td>81.98 us</td><td>1.5813 us</td><td>1.7576 us</td><td>81.45 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>False</td><td>129.73 us</td><td>0.7186 us</td><td>0.6722 us</td><td>129.57 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>False</td><td>80.82 us</td><td>1.5884 us</td><td>1.6312 us</td><td>80.56 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>True</td><td>135.37 us</td><td>3.2561 us</td><td>3.3437 us</td><td>134.63 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>True</td><td>81.70 us</td><td>1.5715 us</td><td>1.6815 us</td><td>81.51 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>True</td><td>135.83 us</td><td>2.6098 us</td><td>3.3005 us</td><td>135.25 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>4096</td><td>True</td><td>83.22 us</td><td>1.6560 us</td><td>1.7719 us</td><td>82.92 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>True</td><td>129.36 us</td><td>1.3810 us</td><td>1.2918 us</td><td>129.26 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>True</td><td>81.50 us</td><td>1.5767 us</td><td>1.9364 us</td><td>81.69 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>True</td><td>130.69 us</td><td>1.1529 us</td><td>1.0784 us</td><td>130.52 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>4096</td><td>True</td><td>80.81 us</td><td>1.6089 us</td><td>1.9152 us</td><td>80.07 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>False</td><td>133.75 us</td><td>2.5513 us</td><td>2.5057 us</td><td>133.35 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>False</td><td>81.79 us</td><td>1.3889 us</td><td>1.2313 us</td><td>81.84 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>False</td><td>133.78 us</td><td>3.0227 us</td><td>2.8275 us</td><td>133.03 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>False</td><td>83.11 us</td><td>1.6497 us</td><td>2.4181 us</td><td>82.87 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>False</td><td>132.05 us</td><td>0.5110 us</td><td>0.4780 us</td><td>131.92 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>False</td><td>81.05 us</td><td>1.5917 us</td><td>2.2313 us</td><td>81.05 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>False</td><td>131.88 us</td><td>1.3734 us</td><td>1.2847 us</td><td>131.97 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>False</td><td>81.98 us</td><td>1.6080 us</td><td>2.0336 us</td><td>81.49 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>True</td><td>133.35 us</td><td>2.4367 us</td><td>2.5023 us</td><td>133.74 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>True</td><td>82.49 us</td><td>1.9446 us</td><td>2.1614 us</td><td>81.83 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>True</td><td>134.63 us</td><td>2.6662 us</td><td>2.7380 us</td><td>134.26 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>16384</td><td>True</td><td>83.31 us</td><td>1.6591 us</td><td>3.4631 us</td><td>82.08 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>True</td><td>130.63 us</td><td>0.7292 us</td><td>0.6465 us</td><td>130.68 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>True</td><td>81.40 us</td><td>1.6076 us</td><td>2.5498 us</td><td>81.00 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>True</td><td>128.76 us</td><td>1.2815 us</td><td>1.1987 us</td><td>128.96 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>16384</td><td>True</td><td>80.71 us</td><td>1.3633 us</td><td>1.2753 us</td><td>80.24 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>False</td><td>133.59 us</td><td>2.6677 us</td><td>2.6201 us</td><td>133.43 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>False</td><td>80.86 us</td><td>1.2955 us</td><td>1.1485 us</td><td>80.81 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>False</td><td>135.18 us</td><td>2.4796 us</td><td>2.3194 us</td><td>134.75 us</td><td>0.2441</td><td>-</td><td>-</td><td>1206 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>False</td><td>83.00 us</td><td>1.6453 us</td><td>2.7033 us</td><td>82.59 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>False</td><td>130.84 us</td><td>1.3926 us</td><td>1.3026 us</td><td>130.89 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>False</td><td>82.06 us</td><td>1.6055 us</td><td>1.7178 us</td><td>81.79 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>False</td><td>129.09 us</td><td>0.8713 us</td><td>0.8150 us</td><td>129.13 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>False</td><td>82.07 us</td><td>1.6109 us</td><td>1.9177 us</td><td>82.03 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>True</td><td>135.55 us</td><td>2.6300 us</td><td>3.0288 us</td><td>135.38 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>True</td><td>83.59 us</td><td>1.6416 us</td><td>2.5069 us</td><td>83.62 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>True</td><td>136.55 us</td><td>2.0373 us</td><td>1.9057 us</td><td>136.83 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>84975</td><td>True</td><td>82.47 us</td><td>1.6329 us</td><td>2.5423 us</td><td>81.72 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>True</td><td>130.62 us</td><td>0.9122 us</td><td>0.8533 us</td><td>130.54 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>True</td><td>82.79 us</td><td>1.5618 us</td><td>1.3845 us</td><td>83.19 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>True</td><td>129.59 us</td><td>0.7712 us</td><td>0.7214 us</td><td>129.90 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>84975</td><td>True</td><td>80.87 us</td><td>1.5722 us</td><td>1.9309 us</td><td>80.68 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>False</td><td>135.04 us</td><td>3.0398 us</td><td>2.6947 us</td><td>134.62 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>False</td><td>84.10 us</td><td>1.6658 us</td><td>3.1288 us</td><td>83.55 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>False</td><td>133.34 us</td><td>1.8420 us</td><td>1.7230 us</td><td>134.05 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>False</td><td>83.89 us</td><td>1.7467 us</td><td>2.0793 us</td><td>83.69 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>False</td><td>126.57 us</td><td>1.0327 us</td><td>0.9660 us</td><td>126.58 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>False</td><td>79.47 us</td><td>0.7304 us</td><td>0.6832 us</td><td>79.67 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>False</td><td>124.34 us</td><td>1.3425 us</td><td>1.2558 us</td><td>123.98 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>False</td><td>78.81 us</td><td>0.4049 us</td><td>0.3787 us</td><td>78.65 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>True</td><td>130.17 us</td><td>1.4318 us</td><td>1.3393 us</td><td>130.46 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>True</td><td>78.55 us</td><td>0.5068 us</td><td>0.4741 us</td><td>78.38 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>True</td><td>128.54 us</td><td>0.7197 us</td><td>0.6380 us</td><td>128.60 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1024</td><td>1048576</td><td>True</td><td>79.37 us</td><td>0.7126 us</td><td>0.6666 us</td><td>79.37 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>True</td><td>129.19 us</td><td>0.6709 us</td><td>0.6276 us</td><td>129.16 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>True</td><td>77.74 us</td><td>0.1835 us</td><td>0.1716 us</td><td>77.68 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>True</td><td>124.04 us</td><td>0.9381 us</td><td>0.8775 us</td><td>123.73 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1024</td><td>1048576</td><td>True</td><td>79.77 us</td><td>0.6872 us</td><td>0.6428 us</td><td>79.99 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>False</td><td>3,656.84 us</td><td>24.4327 us</td><td>22.8544 us</td><td>3,660.39 us</td><td>7.8125</td><td>3.9063</td><td>-</td><td>50785 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>False</td><td>352.64 us</td><td>1.7121 us</td><td>1.5178 us</td><td>352.05 us</td><td>-</td><td>-</td><td>-</td><td>308 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>False</td><td>3,720.38 us</td><td>52.0775 us</td><td>48.7133 us</td><td>3,747.05 us</td><td>7.8125</td><td>3.9063</td><td>-</td><td>50881 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>False</td><td>351.77 us</td><td>1.0388 us</td><td>0.9717 us</td><td>351.91 us</td><td>-</td><td>-</td><td>-</td><td>308 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>False</td><td>2,913.13 us</td><td>26.2866 us</td><td>24.5885 us</td><td>2,909.84 us</td><td>7.8125</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>False</td><td>350.51 us</td><td>0.9706 us</td><td>0.8105 us</td><td>350.57 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>False</td><td>2,892.35 us</td><td>35.1118 us</td><td>32.8436 us</td><td>2,897.02 us</td><td>7.8125</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>False</td><td>357.43 us</td><td>3.4151 us</td><td>3.1945 us</td><td>358.03 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>True</td><td>963.76 us</td><td>2.6922 us</td><td>2.3865 us</td><td>963.18 us</td><td>7.8125</td><td>1.9531</td><td>-</td><td>43825 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>True</td><td>117.55 us</td><td>0.6029 us</td><td>0.5640 us</td><td>117.32 us</td><td>0.8545</td><td>-</td><td>-</td><td>4427 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>True</td><td>959.83 us</td><td>3.0011 us</td><td>2.6604 us</td><td>959.65 us</td><td>8.7891</td><td>0.9766</td><td>-</td><td>43837 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>512</td><td>True</td><td>116.97 us</td><td>0.2971 us</td><td>0.2780 us</td><td>116.90 us</td><td>0.8545</td><td>-</td><td>-</td><td>4426 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>True</td><td>349.13 us</td><td>1.4308 us</td><td>1.3384 us</td><td>348.84 us</td><td>1.4648</td><td>-</td><td>-</td><td>7234 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>True</td><td>117.98 us</td><td>0.6106 us</td><td>0.5099 us</td><td>118.02 us</td><td>0.9766</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>True</td><td>346.20 us</td><td>1.5081 us</td><td>1.4107 us</td><td>346.19 us</td><td>1.4648</td><td>-</td><td>-</td><td>7236 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>512</td><td>True</td><td>117.01 us</td><td>0.5989 us</td><td>0.5602 us</td><td>116.72 us</td><td>0.9766</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>False</td><td>609.75 us</td><td>11.7802 us</td><td>11.5697 us</td><td>614.66 us</td><td>0.9766</td><td>-</td><td>-</td><td>7112 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>False</td><td>112.97 us</td><td>0.3480 us</td><td>0.3255 us</td><td>112.89 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>False</td><td>595.15 us</td><td>5.9455 us</td><td>5.2706 us</td><td>593.63 us</td><td>0.9766</td><td>-</td><td>-</td><td>7112 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>False</td><td>115.27 us</td><td>1.3560 us</td><td>1.2684 us</td><td>114.97 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>False</td><td>494.11 us</td><td>5.5974 us</td><td>5.2358 us</td><td>494.88 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>False</td><td>113.07 us</td><td>0.5249 us</td><td>0.4910 us</td><td>113.07 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>False</td><td>509.38 us</td><td>8.3466 us</td><td>7.8074 us</td><td>509.92 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>False</td><td>112.21 us</td><td>0.2564 us</td><td>0.2398 us</td><td>112.29 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>True</td><td>590.65 us</td><td>12.4082 us</td><td>14.7711 us</td><td>591.30 us</td><td>0.9766</td><td>-</td><td>-</td><td>7112 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>True</td><td>114.46 us</td><td>0.3212 us</td><td>0.2507 us</td><td>114.40 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>True</td><td>576.45 us</td><td>11.4175 us</td><td>14.8460 us</td><td>569.54 us</td><td>0.9766</td><td>-</td><td>-</td><td>7112 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>4096</td><td>True</td><td>112.74 us</td><td>0.4624 us</td><td>0.4099 us</td><td>112.64 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>True</td><td>502.65 us</td><td>8.0318 us</td><td>7.5129 us</td><td>500.13 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>True</td><td>112.82 us</td><td>0.3984 us</td><td>0.3727 us</td><td>112.82 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>True</td><td>480.56 us</td><td>8.9026 us</td><td>8.7435 us</td><td>482.04 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>4096</td><td>True</td><td>114.05 us</td><td>0.2725 us</td><td>0.2275 us</td><td>114.00 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>False</td><td>250.81 us</td><td>0.7071 us</td><td>0.5905 us</td><td>250.76 us</td><td>0.4883</td><td>-</td><td>-</td><td>2368 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>False</td><td>86.98 us</td><td>0.2803 us</td><td>0.2485 us</td><td>86.98 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>False</td><td>254.37 us</td><td>1.3762 us</td><td>1.2873 us</td><td>253.93 us</td><td>0.4883</td><td>-</td><td>-</td><td>2384 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>False</td><td>88.12 us</td><td>0.1445 us</td><td>0.1128 us</td><td>88.15 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>False</td><td>203.57 us</td><td>3.0191 us</td><td>2.8241 us</td><td>204.11 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>False</td><td>88.67 us</td><td>0.8888 us</td><td>0.8313 us</td><td>88.96 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>False</td><td>205.61 us</td><td>1.2549 us</td><td>1.1125 us</td><td>205.78 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>False</td><td>87.66 us</td><td>0.6691 us</td><td>0.5587 us</td><td>87.48 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>True</td><td>255.38 us</td><td>1.1701 us</td><td>1.0372 us</td><td>255.56 us</td><td>0.4883</td><td>-</td><td>-</td><td>2376 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>True</td><td>87.22 us</td><td>0.2523 us</td><td>0.2360 us</td><td>87.27 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>True</td><td>251.76 us</td><td>1.0051 us</td><td>0.8393 us</td><td>251.83 us</td><td>0.4883</td><td>-</td><td>-</td><td>2368 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>16384</td><td>True</td><td>89.91 us</td><td>0.2132 us</td><td>0.1994 us</td><td>89.92 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>True</td><td>208.03 us</td><td>2.3489 us</td><td>2.1972 us</td><td>208.69 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>True</td><td>87.78 us</td><td>0.5788 us</td><td>0.5414 us</td><td>87.63 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>True</td><td>210.03 us</td><td>4.0748 us</td><td>3.8116 us</td><td>210.27 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>16384</td><td>True</td><td>86.67 us</td><td>0.2818 us</td><td>0.2498 us</td><td>86.59 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>False</td><td>132.50 us</td><td>0.4421 us</td><td>0.4135 us</td><td>132.46 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>False</td><td>80.58 us</td><td>0.2805 us</td><td>0.2624 us</td><td>80.54 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>False</td><td>130.99 us</td><td>1.2547 us</td><td>1.1737 us</td><td>130.75 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>False</td><td>83.29 us</td><td>1.3448 us</td><td>1.2579 us</td><td>83.25 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>False</td><td>126.61 us</td><td>0.9373 us</td><td>0.8768 us</td><td>126.41 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>False</td><td>80.67 us</td><td>0.5946 us</td><td>0.5562 us</td><td>80.45 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>False</td><td>129.23 us</td><td>0.8422 us</td><td>0.7466 us</td><td>128.99 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>False</td><td>79.73 us</td><td>0.4084 us</td><td>0.3621 us</td><td>79.60 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>True</td><td>131.45 us</td><td>1.6644 us</td><td>1.5569 us</td><td>130.64 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>True</td><td>84.14 us</td><td>1.1864 us</td><td>1.1098 us</td><td>84.47 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>True</td><td>131.32 us</td><td>1.1079 us</td><td>0.9821 us</td><td>131.11 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>84975</td><td>True</td><td>80.46 us</td><td>0.3184 us</td><td>0.2978 us</td><td>80.43 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>True</td><td>130.16 us</td><td>1.4392 us</td><td>1.3463 us</td><td>130.03 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>True</td><td>82.11 us</td><td>1.3672 us</td><td>1.2789 us</td><td>82.54 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>True</td><td>127.77 us</td><td>1.2281 us</td><td>1.1487 us</td><td>127.78 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>84975</td><td>True</td><td>80.63 us</td><td>0.3092 us</td><td>0.2582 us</td><td>80.56 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>False</td><td>132.85 us</td><td>0.4909 us</td><td>0.4591 us</td><td>132.62 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>False</td><td>81.43 us</td><td>0.1423 us</td><td>0.1111 us</td><td>81.47 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>False</td><td>133.09 us</td><td>1.7252 us</td><td>1.6137 us</td><td>133.28 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>False</td><td>83.95 us</td><td>1.2858 us</td><td>1.2027 us</td><td>84.23 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>False</td><td>127.05 us</td><td>1.3086 us</td><td>1.2241 us</td><td>127.14 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>False</td><td>81.34 us</td><td>0.2172 us</td><td>0.1814 us</td><td>81.39 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>False</td><td>128.56 us</td><td>0.3813 us</td><td>0.3380 us</td><td>128.57 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>False</td><td>80.60 us</td><td>0.4293 us</td><td>0.4015 us</td><td>80.56 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>True</td><td>132.02 us</td><td>2.3842 us</td><td>2.2302 us</td><td>130.91 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>True</td><td>83.91 us</td><td>1.5621 us</td><td>1.4612 us</td><td>83.94 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>True</td><td>130.49 us</td><td>0.3871 us</td><td>0.3432 us</td><td>130.40 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>65536</td><td>1048576</td><td>True</td><td>82.58 us</td><td>0.4510 us</td><td>0.3766 us</td><td>82.65 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>True</td><td>130.92 us</td><td>1.0710 us</td><td>1.0018 us</td><td>131.30 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>True</td><td>80.53 us</td><td>0.2920 us</td><td>0.2589 us</td><td>80.56 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>True</td><td>128.05 us</td><td>2.1685 us</td><td>2.0285 us</td><td>127.53 us</td><td>0.2441</td><td>-</td><td>-</td><td>1047 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>65536</td><td>1048576</td><td>True</td><td>83.25 us</td><td>1.2474 us</td><td>1.1668 us</td><td>83.88 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>False</td><td>55,887.69 us</td><td>213.2876 us</td><td>199.5093 us</td><td>55,923.62 us</td><td>111.1111</td><td>-</td><td>-</td><td>801922 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>False</td><td>4,461.32 us</td><td>19.8776 us</td><td>17.6209 us</td><td>4,460.84 us</td><td>-</td><td>-</td><td>-</td><td>320 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>False</td><td>56,241.41 us</td><td>725.5659 us</td><td>678.6948 us</td><td>56,088.57 us</td><td>111.1111</td><td>-</td><td>-</td><td>801922 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>False</td><td>4,444.26 us</td><td>19.1221 us</td><td>17.8868 us</td><td>4,436.79 us</td><td>-</td><td>-</td><td>-</td><td>320 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>False</td><td>44,272.58 us</td><td>330.7788 us</td><td>309.4107 us</td><td>44,327.29 us</td><td>83.3333</td><td>-</td><td>-</td><td>1057 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>False</td><td>4,444.94 us</td><td>17.0965 us</td><td>15.9921 us</td><td>4,443.46 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>False</td><td>44,224.94 us</td><td>807.3652 us</td><td>755.2099 us</td><td>43,881.38 us</td><td>83.3333</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>False</td><td>4,506.66 us</td><td>48.2879 us</td><td>45.1685 us</td><td>4,511.40 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>True</td><td>13,007.62 us</td><td>21.7590 us</td><td>19.2887 us</td><td>13,008.24 us</td><td>109.3750</td><td>15.6250</td><td>-</td><td>583820 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>True</td><td>714.06 us</td><td>1.4400 us</td><td>1.2766 us</td><td>714.13 us</td><td>-</td><td>-</td><td>-</td><td>4432 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>True</td><td>13,069.43 us</td><td>39.2385 us</td><td>36.7037 us</td><td>13,081.60 us</td><td>109.3750</td><td>15.6250</td><td>-</td><td>584333 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>512</td><td>True</td><td>715.92 us</td><td>3.2267 us</td><td>3.0182 us</td><td>716.04 us</td><td>-</td><td>-</td><td>-</td><td>4432 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>True</td><td>4,299.52 us</td><td>19.0641 us</td><td>17.8325 us</td><td>4,302.25 us</td><td>7.8125</td><td>-</td><td>-</td><td>41808 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>True</td><td>714.98 us</td><td>6.7483 us</td><td>6.3124 us</td><td>712.06 us</td><td>0.9766</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>True</td><td>4,334.26 us</td><td>16.4776 us</td><td>15.4131 us</td><td>4,331.42 us</td><td>7.8125</td><td>-</td><td>-</td><td>41818 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>512</td><td>True</td><td>707.60 us</td><td>1.9440 us</td><td>1.7233 us</td><td>707.43 us</td><td>0.9766</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>False</td><td>7,308.94 us</td><td>63.6267 us</td><td>59.5164 us</td><td>7,293.31 us</td><td>15.6250</td><td>7.8125</td><td>-</td><td>100674 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>False</td><td>667.33 us</td><td>3.9544 us</td><td>3.6989 us</td><td>667.80 us</td><td>-</td><td>-</td><td>-</td><td>312 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>False</td><td>7,194.11 us</td><td>30.2396 us</td><td>26.8066 us</td><td>7,186.67 us</td><td>15.6250</td><td>7.8125</td><td>-</td><td>100866 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>False</td><td>661.59 us</td><td>2.8877 us</td><td>2.5599 us</td><td>661.88 us</td><td>-</td><td>-</td><td>-</td><td>312 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>False</td><td>5,756.27 us</td><td>106.9347 us</td><td>100.0268 us</td><td>5,720.33 us</td><td>15.6250</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>False</td><td>654.90 us</td><td>3.2749 us</td><td>3.0633 us</td><td>653.29 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>False</td><td>5,750.39 us</td><td>59.7183 us</td><td>55.8605 us</td><td>5,733.96 us</td><td>15.6250</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>False</td><td>663.39 us</td><td>6.4907 us</td><td>5.7539 us</td><td>663.04 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>True</td><td>7,212.18 us</td><td>56.2382 us</td><td>52.6052 us</td><td>7,216.65 us</td><td>15.6250</td><td>7.8125</td><td>-</td><td>100482 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>True</td><td>663.00 us</td><td>3.9719 us</td><td>3.5210 us</td><td>663.17 us</td><td>-</td><td>-</td><td>-</td><td>312 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>True</td><td>7,359.44 us</td><td>33.9843 us</td><td>31.7889 us</td><td>7,357.15 us</td><td>15.6250</td><td>7.8125</td><td>-</td><td>100674 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>4096</td><td>True</td><td>657.35 us</td><td>1.5648 us</td><td>1.3872 us</td><td>657.29 us</td><td>-</td><td>-</td><td>-</td><td>312 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>True</td><td>5,764.34 us</td><td>50.5032 us</td><td>47.2407 us</td><td>5,755.60 us</td><td>15.6250</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>True</td><td>665.58 us</td><td>7.6158 us</td><td>7.1238 us</td><td>666.44 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>True</td><td>5,775.23 us</td><td>39.3826 us</td><td>36.8385 us</td><td>5,759.59 us</td><td>15.6250</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>4096</td><td>True</td><td>658.71 us</td><td>2.9784 us</td><td>2.4871 us</td><td>658.74 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>False</td><td>1,979.08 us</td><td>6.6668 us</td><td>5.5671 us</td><td>1,977.50 us</td><td>3.9063</td><td>-</td><td>-</td><td>25857 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>False</td><td>254.97 us</td><td>1.6169 us</td><td>1.4334 us</td><td>254.82 us</td><td>-</td><td>-</td><td>-</td><td>308 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>False</td><td>1,970.81 us</td><td>2.4388 us</td><td>2.1619 us</td><td>1,970.46 us</td><td>3.9063</td><td>-</td><td>-</td><td>25857 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>False</td><td>251.29 us</td><td>1.5440 us</td><td>1.4443 us</td><td>251.56 us</td><td>-</td><td>-</td><td>-</td><td>308 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>False</td><td>1,652.44 us</td><td>9.4633 us</td><td>8.8520 us</td><td>1,649.80 us</td><td>3.9063</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>False</td><td>251.24 us</td><td>1.0582 us</td><td>0.9381 us</td><td>250.95 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>False</td><td>1,650.37 us</td><td>32.4220 us</td><td>36.0369 us</td><td>1,648.07 us</td><td>3.9063</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>False</td><td>249.65 us</td><td>2.9630 us</td><td>2.6266 us</td><td>248.69 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>True</td><td>2,025.72 us</td><td>21.0835 us</td><td>19.7215 us</td><td>2,033.82 us</td><td>3.9063</td><td>-</td><td>-</td><td>25825 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>True</td><td>253.11 us</td><td>1.1927 us</td><td>1.0573 us</td><td>252.83 us</td><td>-</td><td>-</td><td>-</td><td>308 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>True</td><td>1,992.72 us</td><td>14.2424 us</td><td>12.6255 us</td><td>1,988.45 us</td><td>3.9063</td><td>-</td><td>-</td><td>25921 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>16384</td><td>True</td><td>255.55 us</td><td>2.1888 us</td><td>1.9404 us</td><td>255.13 us</td><td>-</td><td>-</td><td>-</td><td>308 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>True</td><td>1,624.56 us</td><td>20.7031 us</td><td>19.3657 us</td><td>1,621.77 us</td><td>3.9063</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>True</td><td>251.00 us</td><td>2.6429 us</td><td>2.4722 us</td><td>250.20 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>True</td><td>1,624.81 us</td><td>16.0023 us</td><td>14.9686 us</td><td>1,627.86 us</td><td>3.9063</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>16384</td><td>True</td><td>251.14 us</td><td>0.7568 us</td><td>0.6319 us</td><td>250.86 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>False</td><td>552.24 us</td><td>10.9842 us</td><td>19.2379 us</td><td>555.02 us</td><td>0.9766</td><td>-</td><td>-</td><td>5944 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>False</td><td>148.22 us</td><td>1.7142 us</td><td>1.6035 us</td><td>148.20 us</td><td>-</td><td>-</td><td>-</td><td>306 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>False</td><td>535.93 us</td><td>7.5186 us</td><td>6.6650 us</td><td>533.43 us</td><td>0.9766</td><td>-</td><td>-</td><td>5952 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>False</td><td>145.28 us</td><td>0.7926 us</td><td>0.7414 us</td><td>145.10 us</td><td>-</td><td>-</td><td>-</td><td>306 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>False</td><td>484.98 us</td><td>4.4078 us</td><td>4.1231 us</td><td>485.63 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>False</td><td>144.93 us</td><td>0.3837 us</td><td>0.3204 us</td><td>144.84 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>False</td><td>463.08 us</td><td>5.0092 us</td><td>4.6856 us</td><td>461.91 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>False</td><td>148.31 us</td><td>0.9835 us</td><td>0.8213 us</td><td>148.47 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>True</td><td>536.86 us</td><td>11.1121 us</td><td>15.5776 us</td><td>539.70 us</td><td>0.9766</td><td>-</td><td>-</td><td>5944 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>True</td><td>148.03 us</td><td>1.5950 us</td><td>1.4919 us</td><td>147.80 us</td><td>-</td><td>-</td><td>-</td><td>306 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>True</td><td>556.79 us</td><td>10.1273 us</td><td>9.4731 us</td><td>555.87 us</td><td>0.9766</td><td>-</td><td>-</td><td>5944 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>84975</td><td>True</td><td>144.88 us</td><td>0.6389 us</td><td>0.5664 us</td><td>144.79 us</td><td>-</td><td>-</td><td>-</td><td>306 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>True</td><td>474.07 us</td><td>6.7558 us</td><td>6.3194 us</td><td>475.12 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>True</td><td>147.27 us</td><td>0.5226 us</td><td>0.4364 us</td><td>147.32 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>True</td><td>471.38 us</td><td>6.1873 us</td><td>5.7876 us</td><td>471.49 us</td><td>0.9766</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>84975</td><td>True</td><td>146.96 us</td><td>1.2928 us</td><td>1.2093 us</td><td>146.76 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>False</td><td>176.31 us</td><td>1.9534 us</td><td>1.8272 us</td><td>176.59 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>False</td><td>121.53 us</td><td>0.3779 us</td><td>0.3535 us</td><td>121.50 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>False</td><td>174.88 us</td><td>2.1408 us</td><td>2.0025 us</td><td>174.60 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>False</td><td>126.69 us</td><td>1.1872 us</td><td>0.9914 us</td><td>126.84 us</td><td>-</td><td>-</td><td>-</td><td>306 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>False</td><td>173.73 us</td><td>2.6133 us</td><td>2.4445 us</td><td>173.84 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>False</td><td>119.60 us</td><td>0.4906 us</td><td>0.4096 us</td><td>119.46 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>False</td><td>173.83 us</td><td>1.7791 us</td><td>1.5771 us</td><td>173.72 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>False</td><td>119.92 us</td><td>1.0359 us</td><td>0.9183 us</td><td>119.94 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>True</td><td>175.79 us</td><td>1.1826 us</td><td>1.0483 us</td><td>176.15 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>True</td><td>121.38 us</td><td>0.4923 us</td><td>0.4364 us</td><td>121.28 us</td><td>-</td><td>-</td><td>-</td><td>305 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>True</td><td>174.77 us</td><td>3.3201 us</td><td>3.1056 us</td><td>173.46 us</td><td>0.2441</td><td>-</td><td>-</td><td>1204 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>1048576</td><td>1048576</td><td>True</td><td>127.11 us</td><td>2.5036 us</td><td>2.4588 us</td><td>128.55 us</td><td>-</td><td>-</td><td>-</td><td>306 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>True</td><td>166.16 us</td><td>1.4558 us</td><td>1.1366 us</td><td>165.96 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>True</td><td>120.11 us</td><td>0.6715 us</td><td>0.5242 us</td><td>120.14 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>True</td><td>169.88 us</td><td>2.9349 us</td><td>2.7453 us</td><td>168.71 us</td><td>0.2441</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>1048576</td><td>1048576</td><td>True</td><td>123.02 us</td><td>3.3123 us</td><td>3.0983 us</td><td>122.06 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>False</td><td>5,642,547.67 us</td><td>53,516.0466 us</td><td>50,058.9432 us</td><td>5,645,766.40 us</td><td>16000.0000</td><td>8000.0000</td><td>-</td><td>79546128 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>False</td><td>458,007.59 us</td><td>2,493.9397 us</td><td>2,332.8327 us</td><td>457,997.90 us</td><td>-</td><td>-</td><td>-</td><td>8192 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>False</td><td>5,647,922.72 us</td><td>38,590.7363 us</td><td>36,097.7987 us</td><td>5,642,582.90 us</td><td>16000.0000</td><td>8000.0000</td><td>-</td><td>79603720 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>False</td><td>460,617.80 us</td><td>3,582.0937 us</td><td>3,175.4327 us</td><td>460,126.55 us</td><td>-</td><td>-</td><td>-</td><td>8192 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>False</td><td>4,324,020.13 us</td><td>28,865.1451 us</td><td>27,000.4747 us</td><td>4,331,692.00 us</td><td>15000.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>False</td><td>455,913.89 us</td><td>1,475.3928 us</td><td>1,307.8973 us</td><td>455,635.90 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>False</td><td>4,450,135.62 us</td><td>26,022.3168 us</td><td>24,341.2913 us</td><td>4,445,634.90 us</td><td>15000.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>False</td><td>464,598.96 us</td><td>5,387.9648 us</td><td>5,039.9056 us</td><td>466,320.00 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>True</td><td>1,307,276.38 us</td><td>3,098.1044 us</td><td>2,746.3888 us</td><td>1,306,782.15 us</td><td>11000.0000</td><td>1000.0000</td><td>-</td><td>57621592 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>True</td><td>81,196.59 us</td><td>277.7045 us</td><td>259.7649 us</td><td>81,047.03 us</td><td>-</td><td>-</td><td>-</td><td>4681 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>True</td><td>1,317,803.18 us</td><td>7,212.1920 us</td><td>6,746.2889 us</td><td>1,319,529.20 us</td><td>11000.0000</td><td>1000.0000</td><td>-</td><td>57592264 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>512</td><td>True</td><td>80,992.42 us</td><td>293.6377 us</td><td>260.3022 us</td><td>80,895.54 us</td><td>-</td><td>-</td><td>-</td><td>4681 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>True</td><td>446,397.13 us</td><td>1,882.2521 us</td><td>1,760.6598 us</td><td>446,718.30 us</td><td>-</td><td>-</td><td>-</td><td>3694528 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>True</td><td>81,192.66 us</td><td>351.7924 us</td><td>329.0669 us</td><td>81,125.36 us</td><td>-</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>True</td><td>446,822.60 us</td><td>3,359.1634 us</td><td>3,142.1635 us</td><td>446,028.50 us</td><td>-</td><td>-</td><td>-</td><td>3693760 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>512</td><td>True</td><td>81,623.18 us</td><td>697.7131 us</td><td>652.6413 us</td><td>81,400.14 us</td><td>-</td><td>-</td><td>-</td><td>4640 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>False</td><td>727,767.76 us</td><td>5,389.6308 us</td><td>5,041.4640 us</td><td>727,532.60 us</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>9945376 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>False</td><td>75,881.98 us</td><td>275.2010 us</td><td>243.9585 us</td><td>75,907.53 us</td><td>-</td><td>-</td><td>-</td><td>1170 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>False</td><td>723,927.68 us</td><td>4,991.8922 us</td><td>4,425.1824 us</td><td>723,915.40 us</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>9978144 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>False</td><td>76,048.24 us</td><td>232.9583 us</td><td>206.5115 us</td><td>76,011.56 us</td><td>-</td><td>-</td><td>-</td><td>1170 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>False</td><td>579,925.33 us</td><td>3,308.4365 us</td><td>2,932.8428 us</td><td>579,861.70 us</td><td>1000.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>False</td><td>75,735.58 us</td><td>214.3444 us</td><td>178.9873 us</td><td>75,709.60 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>False</td><td>578,686.84 us</td><td>2,860.9269 us</td><td>2,389.0035 us</td><td>579,054.10 us</td><td>1000.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>False</td><td>75,948.54 us</td><td>383.6058 us</td><td>358.8251 us</td><td>75,877.93 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>True</td><td>724,242.26 us</td><td>3,870.4348 us</td><td>3,021.7809 us</td><td>724,225.15 us</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>9994528 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>True</td><td>75,716.26 us</td><td>224.2394 us</td><td>187.2500 us</td><td>75,696.20 us</td><td>-</td><td>-</td><td>-</td><td>1170 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>True</td><td>737,364.04 us</td><td>5,439.8737 us</td><td>5,088.4612 us</td><td>737,480.80 us</td><td>2000.0000</td><td>1000.0000</td><td>-</td><td>9978144 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>4096</td><td>True</td><td>76,655.84 us</td><td>231.8670 us</td><td>205.5440 us</td><td>76,658.69 us</td><td>-</td><td>-</td><td>-</td><td>1170 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>True</td><td>573,560.62 us</td><td>5,816.6137 us</td><td>5,440.8641 us</td><td>571,246.90 us</td><td>1000.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>True</td><td>76,453.17 us</td><td>477.4542 us</td><td>446.6109 us</td><td>76,398.21 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>True</td><td>587,062.63 us</td><td>4,518.8644 us</td><td>4,226.9485 us</td><td>586,000.10 us</td><td>1000.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>4096</td><td>True</td><td>75,717.29 us</td><td>271.2658 us</td><td>240.4701 us</td><td>75,644.99 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>False</td><td>199,239.10 us</td><td>795.0835 us</td><td>743.7216 us</td><td>199,306.50 us</td><td>333.3333</td><td>-</td><td>-</td><td>2504069 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>False</td><td>30,095.66 us</td><td>78.6950 us</td><td>69.7610 us</td><td>30,068.04 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>False</td><td>196,200.69 us</td><td>442.1677 us</td><td>391.9702 us</td><td>196,037.70 us</td><td>333.3333</td><td>-</td><td>-</td><td>2504069 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>False</td><td>30,340.36 us</td><td>297.5267 us</td><td>278.3067 us</td><td>30,185.98 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>False</td><td>159,922.42 us</td><td>1,516.1470 us</td><td>1,418.2048 us</td><td>160,106.98 us</td><td>250.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>False</td><td>30,180.38 us</td><td>98.3657 us</td><td>87.1986 us</td><td>30,148.72 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>False</td><td>159,137.83 us</td><td>717.3622 us</td><td>671.0210 us</td><td>159,403.40 us</td><td>250.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>False</td><td>30,263.93 us</td><td>112.7526 us</td><td>105.4688 us</td><td>30,267.39 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>True</td><td>198,021.51 us</td><td>1,269.9713 us</td><td>1,187.9319 us</td><td>197,873.90 us</td><td>333.3333</td><td>-</td><td>-</td><td>2504069 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>True</td><td>30,265.47 us</td><td>178.2204 us</td><td>157.9878 us</td><td>30,220.76 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>True</td><td>203,785.13 us</td><td>529.7328 us</td><td>413.5805 us</td><td>203,780.72 us</td><td>333.3333</td><td>-</td><td>-</td><td>2509531 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>16384</td><td>True</td><td>30,503.94 us</td><td>297.6258 us</td><td>278.3993 us</td><td>30,554.73 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>True</td><td>160,953.59 us</td><td>1,474.9005 us</td><td>1,379.6228 us</td><td>161,208.40 us</td><td>250.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>True</td><td>30,226.04 us</td><td>124.8336 us</td><td>116.7694 us</td><td>30,218.09 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>True</td><td>159,679.71 us</td><td>1,629.2522 us</td><td>1,524.0035 us</td><td>159,372.38 us</td><td>250.0000</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>16384</td><td>True</td><td>30,021.51 us</td><td>85.3669 us</td><td>79.8523 us</td><td>30,024.28 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>False</td><td>51,757.45 us</td><td>321.4764 us</td><td>284.9805 us</td><td>51,737.95 us</td><td>100.0000</td><td>-</td><td>-</td><td>483342 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>False</td><td>18,497.85 us</td><td>205.6319 us</td><td>182.2873 us</td><td>18,545.69 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>False</td><td>51,121.14 us</td><td>128.3501 us</td><td>113.7790 us</td><td>51,153.60 us</td><td>100.0000</td><td>-</td><td>-</td><td>483342 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>False</td><td>18,149.23 us</td><td>132.0703 us</td><td>123.5387 us</td><td>18,113.67 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>False</td><td>42,696.88 us</td><td>759.8701 us</td><td>673.6051 us</td><td>42,438.00 us</td><td>83.3333</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>False</td><td>18,161.36 us</td><td>71.2822 us</td><td>63.1898 us</td><td>18,146.89 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>False</td><td>41,672.21 us</td><td>224.1654 us</td><td>209.6845 us</td><td>41,651.68 us</td><td>83.3333</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>False</td><td>18,230.49 us</td><td>88.9093 us</td><td>83.1658 us</td><td>18,223.55 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>True</td><td>51,433.35 us</td><td>271.7881 us</td><td>254.2308 us</td><td>51,442.27 us</td><td>100.0000</td><td>-</td><td>-</td><td>483342 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>True</td><td>18,289.38 us</td><td>163.1430 us</td><td>152.6040 us</td><td>18,243.12 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>True</td><td>51,824.53 us</td><td>308.8006 us</td><td>288.8523 us</td><td>51,770.49 us</td><td>100.0000</td><td>-</td><td>-</td><td>481704 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>84975</td><td>True</td><td>18,168.06 us</td><td>72.6893 us</td><td>67.9936 us</td><td>18,155.41 us</td><td>-</td><td>-</td><td>-</td><td>512 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>True</td><td>41,680.35 us</td><td>211.0633 us</td><td>187.1021 us</td><td>41,675.35 us</td><td>83.3333</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>True</td><td>18,245.20 us</td><td>94.9337 us</td><td>84.1562 us</td><td>18,243.28 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>True</td><td>41,788.49 us</td><td>313.9157 us</td><td>293.6369 us</td><td>41,737.52 us</td><td>76.9231</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>84975</td><td>True</td><td>18,171.04 us</td><td>95.4997 us</td><td>89.3305 us</td><td>18,148.83 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>False</td><td>20,785.51 us</td><td>413.5539 us</td><td>1,152.8231 us</td><td>20,381.10 us</td><td>-</td><td>-</td><td>-</td><td>40192 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>False</td><td>15,267.18 us</td><td>48.6267 us</td><td>43.1063 us</td><td>15,266.72 us</td><td>-</td><td>-</td><td>-</td><td>384 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>False</td><td>20,923.25 us</td><td>417.9825 us</td><td>1,205.9752 us</td><td>20,699.23 us</td><td>-</td><td>-</td><td>-</td><td>40192 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>False</td><td>15,824.83 us</td><td>301.0007 us</td><td>309.1055 us</td><td>16,003.76 us</td><td>-</td><td>-</td><td>-</td><td>384 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>False</td><td>17,676.05 us</td><td>136.0771 us</td><td>127.2866 us</td><td>17,670.98 us</td><td>-</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>False</td><td>15,209.58 us</td><td>40.8697 us</td><td>36.2299 us</td><td>15,203.86 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>False</td><td>17,493.24 us</td><td>79.9926 us</td><td>70.9113 us</td><td>17,499.19 us</td><td>-</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>False</td><td>15,388.26 us</td><td>64.7338 us</td><td>60.5520 us</td><td>15,376.10 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>True</td><td>21,701.07 us</td><td>423.6634 us</td><td>550.8821 us</td><td>21,745.71 us</td><td>-</td><td>-</td><td>-</td><td>40192 B</td>
+</tr><tr><td>SyncFileStream</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>True</td><td>15,380.15 us</td><td>74.6257 us</td><td>69.8049 us</td><td>15,369.09 us</td><td>-</td><td>-</td><td>-</td><td>384 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>True</td><td>21,102.76 us</td><td>435.6602 us</td><td>1,284.5539 us</td><td>20,483.34 us</td><td>-</td><td>-</td><td>-</td><td>40192 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Clr</td><td>Clr</td><td>104857600</td><td>1048576</td><td>True</td><td>15,252.89 us</td><td>53.5086 us</td><td>50.0520 us</td><td>15,252.18 us</td><td>-</td><td>-</td><td>-</td><td>384 B</td>
+</tr><tr><td>AsyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>True</td><td>17,529.14 us</td><td>99.9007 us</td><td>93.4472 us</td><td>17,532.21 us</td><td>-</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStream</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>True</td><td>15,396.82 us</td><td>50.6477 us</td><td>44.8979 us</td><td>15,389.92 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
+</tr><tr><td>AsyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>True</td><td>17,467.88 us</td><td>104.8846 us</td><td>98.1092 us</td><td>17,507.31 us</td><td>-</td><td>-</td><td>-</td><td>1048 B</td>
+</tr><tr><td>SyncFileStreamSequentialOptions</td><td>Core</td><td>Core</td><td>104857600</td><td>1048576</td><td>True</td><td>15,354.01 us</td><td>83.7713 us</td><td>74.2611 us</td><td>15,339.77 us</td><td>-</td><td>-</td><td>-</td><td>520 B</td>
 </tr></tbody></table>
 </body>
 </html>

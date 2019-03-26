@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp2.2;net47</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.2;net472</TargetFrameworks>
+    <DefineConstants Condition="'$(TargetFramework)' == 'net472'">NET</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

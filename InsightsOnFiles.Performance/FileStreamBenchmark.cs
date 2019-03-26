@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 
@@ -8,34 +9,43 @@ namespace InsightsOnFiles.Performance
     {
         private const string FileName = "test.blob";
 
-        [Params(100, 512, 1024, 2048, 4096, 8192, 1024 * 16, 1024 * 32, 1024 * 64, 1024 * 128, 1024 * 512, 1024 * 1024, 1024 * 1024 * 10)]
+        [Params(1024, 1024 * 64, 1024 * 1024, 1024 * 1024 * 100)]
         public int FileSize { get; set; }
 
-        [Params(512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 84975)]
+        [Params(512, 4096, 1024 * 16, 84975, 1024 * 1024)] // last one is on LOH, second to last is the largest array on the SOH
         public int BufferSize { get; set; }
+
+        [Params(true, false)]
+        public bool UseStreamDefaultBufferSize { get; set; }
+
+        private byte[] _buffer;
+        private int _streamBufferSize;
 
         [GlobalSetup]
         public void GlobalSetup()
         {
             var bytes = new byte[FileSize];
-            for (var i = 0; i < FileSize; ++i)
-            {
-                bytes[i] = (byte) (i % byte.MaxValue);
-            }
-
+            new Random().NextBytes(bytes);
             File.WriteAllBytes(FileName, bytes);
+
+            _buffer = new byte[BufferSize];
+            _streamBufferSize = UseStreamDefaultBufferSize ? 4096 : BufferSize;
         }
 
         [Benchmark]
         public async Task<int> AsyncFileStream()
         {
             var totalNumberOfBytesRead = 0;
-            var buffer = new byte[BufferSize];
-            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, BufferSize, FileOptions.Asynchronous))
+            var buffer = _buffer;
+            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, _streamBufferSize, FileOptions.Asynchronous))
             {
                 do
                 {
+#if NET
                     var numberOfBytesRead = await fileStream.ReadAsync(buffer, 0, BufferSize);
+#else
+                    var numberOfBytesRead = await fileStream.ReadAsync(buffer);
+#endif
                     totalNumberOfBytesRead += numberOfBytesRead;
                 } while (totalNumberOfBytesRead < FileSize);
             }
@@ -47,12 +57,16 @@ namespace InsightsOnFiles.Performance
         public int SyncFileStream()
         {
             var totalNumberOfBytesRead = 0;
-            var buffer = new byte[BufferSize];
-            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, BufferSize, FileOptions.None))
+            var buffer = _buffer;
+            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, _streamBufferSize, FileOptions.None))
             {
                 do
                 {
+#if NET
                     var numberOfBytesRead = fileStream.Read(buffer, 0, BufferSize);
+#else
+                    var numberOfBytesRead = fileStream.Read(buffer);
+#endif
                     totalNumberOfBytesRead += numberOfBytesRead;
                 } while (totalNumberOfBytesRead < FileSize);
             }
@@ -64,12 +78,16 @@ namespace InsightsOnFiles.Performance
         public async Task<int> AsyncFileStreamSequentialOptions()
         {
             var totalNumberOfBytesRead = 0;
-            var buffer = new byte[BufferSize];
-            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, BufferSize, FileOptions.Asynchronous | FileOptions.SequentialScan))
+            var buffer = _buffer;
+            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, _streamBufferSize, FileOptions.Asynchronous | FileOptions.SequentialScan))
             {
                 do
                 {
+#if NET
                     var numberOfBytesRead = await fileStream.ReadAsync(buffer, 0, BufferSize);
+#else
+                    var numberOfBytesRead = await fileStream.ReadAsync(buffer);
+#endif
                     totalNumberOfBytesRead += numberOfBytesRead;
                 } while (totalNumberOfBytesRead < FileSize);
             }
@@ -81,12 +99,16 @@ namespace InsightsOnFiles.Performance
         public int SyncFileStreamSequentialOptions()
         {
             var totalNumberOfBytesRead = 0;
-            var buffer = new byte[BufferSize];
-            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, BufferSize, FileOptions.SequentialScan))
+            var buffer = _buffer;
+            using (var fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None, _streamBufferSize, FileOptions.SequentialScan))
             {
                 do
                 {
+#if NET
                     var numberOfBytesRead = fileStream.Read(buffer, 0, BufferSize);
+#else
+                    var numberOfBytesRead = fileStream.Read(buffer);
+#endif
                     totalNumberOfBytesRead += numberOfBytesRead;
                 } while (totalNumberOfBytesRead < FileSize);
             }
