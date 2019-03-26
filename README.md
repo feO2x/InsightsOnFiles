@@ -1,12 +1,19 @@
 # InsightsOnFiles
 Some performace tests for file-based operations on .NET / .NET Core
 
-This repository contains triangulation and performance tests for FileStreams in .NET Core 2.2 and .NET 4.7.2 on Windows. Especially the performance comparison between asynchronous and synchronous streams is interesting, as the latter performs better than the async version across the board. 
+This repository contains triangulation and performance tests for FileStreams in .NET Core 2.2 and .NET 4.7.2 on Windows. Especially the performance comparison between asynchronous and synchronous streams is interesting, as the latter performs better than the async version across the board.
+
+The current recommendations are:
+
+- if files are small, load them synchronously. Only when files have several tens of megabytes, you should consider loading them asynchronously (keep in mind, we are loading bytes in these tests, we do not parse anything. But parsing is usually done in memory).
+- Larger buffer sizes reduce the total time tremendously. Keep in mind that buffers larger than 84975 bytes will be placed on the Large Object Heap.
+- `FileOptions.SequentialScan` has no significant impact (I only tested files up to 100MB)
+- There is no significant impact when changing the file stream's internal buffer size.
 
 Please keep the following things in mind:
 - FileSize is the file size in bytes that was read. They range from 1KB to 100MB.
 - BufferSize is the amount of bytes that were used in buffer arrays (both passed to the FileStream and used as the caller's buffer).
-- When UseStreamDefaultBufferSize is set to true, then the FileStream's internal buffer size is set to the default value of 4096. If it is false, then BufferSize is set.
+- When IsDBS is set to true, then the FileStream's internal buffer size is set to the default value of 4096. If it is false, then BufferSize is set.
 - All files were read  sequentially from start to finish.
 - All tests were performed on an SSD.
 - Mean                : Arithmetic mean of all measurements
