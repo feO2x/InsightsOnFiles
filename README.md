@@ -4,7 +4,7 @@ Some performace tests for file-based operations on .NET / .NET Core
 This repository contains triangulation and performance tests for FileStreams in .NET Core 2.2 and .NET 4.7.2. Especially the performance comparison between asynchronous and synchronous streams is interesting, as the latter performs better than the async version across the board. 
 
 Please keep the following things in mind:
-- FileSize is the file size in bytes that was read. They range from 10KB to 10MB.
+- FileSize is the file size in bytes that was read. They range from 1KB to 100MB.
 - BufferSize is the amount of bytes that were used in buffer arrays (both passed to the FileStream and used as the caller's buffer).
 - When UseStreamDefaultBufferSize is set to true, then the FileStream's internal buffer size is set to the default value of 4096. If it is false, then BufferSize is set.
 - All files were read  sequentially from start to finish.
