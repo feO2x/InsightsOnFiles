@@ -45,7 +45,8 @@ namespace InsightsOnFiles.Tests
                     await writeStream.WriteAsync(writeBuffer);
 
                 var readBuffer = new byte[fileSize];
-                using (var readStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read, 85_000, FileOptions.Asynchronous))
+                const int largeStreamBufferSize = 84075; // This is the largest array size that will fit on the SOH
+                using (var readStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read, largeStreamBufferSize, FileOptions.Asynchronous))
                 {
                     var task = readStream.ReadAsync(readBuffer, 0, fileSize);
                     task.IsCompleted.Should().BeTrue();
