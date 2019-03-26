@@ -9,7 +9,7 @@ The current recommendations are:
 - Larger buffer sizes reduce the total time tremendously. Keep in mind that buffers larger than 84975 bytes will be placed on the Large Object Heap.
 - `FileOptions.SequentialScan` has no significant impact (I only tested files up to 100MB)
 - There is no significant impact when changing the file stream's internal buffer size.
-- On .NET Core, if your stream buffer size is larger than the file size (same size won't be enough), then `ReadAsync` will complete synchronously (see [this autoamted test](https://github.com/feO2x/InsightsOnFiles/blob/22133bcf746513b9f298d442c008f56da626fa9c/InsightsOnFiles.Tests/AFileStreamOnWindows.cs#L52)).
+- On .NET Core, if your stream buffer size is larger than the file size (same size won't be enough), then `ReadAsync` will complete synchronously (see [this automated test](https://github.com/feO2x/InsightsOnFiles/blob/22133bcf746513b9f298d442c008f56da626fa9c/InsightsOnFiles.Tests/AFileStreamOnWindows.cs#L52)).
 
 Please keep the following things in mind:
 - FileSize is the file size in bytes that was read. They range from 1KB to 100MB.
