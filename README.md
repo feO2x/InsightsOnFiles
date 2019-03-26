@@ -1,7 +1,7 @@
 # InsightsOnFiles
 Some performace tests for file-based operations on .NET / .NET Core
 
-This repository contains triangulation and performance tests for FileStreams in .NET Core 2.2 and .NET 4.7.2. Especially the performance comparison between asynchronous and synchronous streams is interesting, as the latter performs better than the async version across the board. 
+This repository contains triangulation and performance tests for FileStreams in .NET Core 2.2 and .NET 4.7.2 on Windows. Especially the performance comparison between asynchronous and synchronous streams is interesting, as the latter performs better than the async version across the board. 
 
 Please keep the following things in mind:
 - FileSize is the file size in bytes that was read. They range from 1KB to 100MB.
